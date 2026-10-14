@@ -243,7 +243,7 @@ struct LCAppListView : View, LCAppBannerDelegate, LCAppModelDelegate {
 
                         }
                     } else {
-                        Button("Help", systemImage: "questionmark") {
+                        Button("lc.common.help".loc, systemImage: "questionmark") {
                             helpPresent = true
                         }
                     }
@@ -259,7 +259,7 @@ struct LCAppListView : View, LCAppBannerDelegate, LCAppModelDelegate {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
-                        Picker("Sort by", selection: $sharedAppSortManager.appSortType) {
+                        Picker("lc.appList.sortBy".loc, selection: $sharedAppSortManager.appSortType) {
                             ForEach(AppSortType.allCases, id: \.self) { sortType in
                                 Label(sortType.displayName, systemImage: sortType.systemImage)
                                     .tag(sortType)
@@ -280,7 +280,7 @@ struct LCAppListView : View, LCAppBannerDelegate, LCAppModelDelegate {
                             }
                         }
                     } label: {
-                        Label("Sort by", systemImage: "line.3.horizontal.decrease.circle")
+                        Label("lc.appList.sortBy".loc, systemImage: "line.3.horizontal.decrease.circle")
                     }
                 }
             }
@@ -1120,7 +1120,7 @@ struct LCAppListView : View, LCAppBannerDelegate, LCAppModelDelegate {
                                 Task { await openWebView(urlString: url.absoluteString) }
                             }
                         } else {
-                            errorInfo = "StosDebug is not found. Please install it first and switch it to shared app."
+                            errorInfo = "lc.jitDebug.appNotFound %@".localizeWithFormat("StosDebug")
                             errorShow = true
                             return
                         }
@@ -1141,7 +1141,7 @@ struct LCAppListView : View, LCAppBannerDelegate, LCAppModelDelegate {
                         }) {
                             Task { await openWebView(urlString: url.absoluteString) }
                         } else {
-                            errorInfo = "StikDebug is not found. Please install it first and switch it to shared app."
+                            errorInfo = "lc.jitDebug.appNotFound %@".localizeWithFormat("StikDebug")
                             errorShow = true
                             return
                         }

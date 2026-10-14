@@ -76,7 +76,7 @@ struct LCAppSettingsView: View {
                             Text("lc.appSettings.tweakFolder".loc)
                                 .foregroundColor(.primary)
                             Spacer()
-                            Text(model.uiTweakFolder == nil ? "None" : model.uiTweakFolder!)
+                            Text(model.uiTweakFolder == nil ? "lc.common.none".loc : model.uiTweakFolder!)
                                 .multilineTextAlignment(.trailing)
                         }
                     }
@@ -167,7 +167,7 @@ struct LCAppSettingsView: View {
                             }
                             .buttonStyle(BorderlessButtonStyle())
                         } else {
-                            Text("No file selected")
+                            Text("lc.common.noFileSelected".loc)
                                 .foregroundColor(.gray)
                         }
                         Button(action: {

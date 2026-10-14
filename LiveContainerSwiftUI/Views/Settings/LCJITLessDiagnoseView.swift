@@ -18,7 +18,7 @@ struct LCEntitlementView : View {
     @State var isBundleIdCorrect = false
     @State var appGroup = false
     
-    @State var entitlementContent = "Failed to Load Entitlement."
+    @State var entitlementContent = "lc.jitlessDiag.entitlementLoadFailed".loc
     
     var body: some View {
         if loaded {
@@ -81,7 +81,7 @@ struct LCEntitlementView : View {
                         .font(.system(.subheadline, design: .monospaced))
                 }
             }
-            .navigationTitle(isLiveProcess ? "LiveProcess Entitlements" : "LiveContainer Entitlements")
+            .navigationTitle(isLiveProcess ? "lc.jitlessDiag.lpEntitlements".loc : "lc.jitlessDiag.lcEntitlements".loc)
             .navigationBarTitleDisplayMode(.inline)
         } else {
             Text("lc.common.loading".loc)
@@ -107,13 +107,13 @@ struct LCEntitlementView : View {
         } else {
             executablePath = Bundle.main.builtInPlugInsURL?.appendingPathComponent("LiveProcess.appex/LiveProcess").path
             if let executablePath, !FileManager.default.fileExists(atPath: executablePath) {
-                entitlementContent = "LiveProcess is not installed."
+                entitlementContent = "lc.jitlessDiag.liveProcessNotInstalled".loc
                 return
             }
         }
 
         guard let entitlementXML = getExecutableEntitlementXML(executablePath) else {
-            entitlementContent = "Failed to load entitlement."
+            entitlementContent = "lc.jitlessDiag.entitlementLoadFailed".loc
             return
         }
         entitlementContent = entitlementXML
@@ -229,13 +229,13 @@ struct LCJITLessDiagnoseView : View {
                     NavigationLink {
                         LCEntitlementView(isLiveProcess: false)
                     } label: {
-                        Text("LiveContainer Entitlements".loc)
+                        Text("lc.jitlessDiag.lcEntitlements".loc)
                     }
                     if sharedModel.multiLCStatus == 0 {
                         NavigationLink {
                             LCEntitlementView(isLiveProcess: true)
                         } label: {
-                            Text("LiveProcess Entitlements".loc)
+                            Text("lc.jitlessDiag.lpEntitlements".loc)
                         }
                     }
                 }
