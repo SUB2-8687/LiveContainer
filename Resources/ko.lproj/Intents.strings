@@ -1,0 +1,9 @@
+/* 단축어 '모든 앱 새로고침' (RefreshAll) 인텐트 한글화 - 키는 Intents.intentdefinition의 ID와 동일 */
+"2b6Xto" = "모든 앱 새로고침";
+"cJxa2I" = "모든 앱 새로고침";
+"DKTGdO" = "모든 앱 새로고침";
+"3WMWsJ" = "모든 앱이 새로고침되었습니다.";
+"BjInD3" = "모든 앱이 새로고침되었습니다.";
+"GJdShK" = "${localizedDescription}";
+"oXAiOU" = "${localizedDescription}";
+"wdy22v" = "설명";

@@ -1,6 +1,23 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "All apps have been refreshed." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All apps have been refreshed."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 앱이 새로고침되었습니다."
+          }
+        }
+      }
+    },
     "Refresh All Apps" : {
       "extractionState" : "manual",
       "localizations" : {
