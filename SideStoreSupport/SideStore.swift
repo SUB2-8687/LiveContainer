@@ -70,9 +70,10 @@ public struct RefreshAllAppsIntent: AppIntent, CustomIntentMigratedAppIntent, Pr
 // LiveProcess(SideStore 실행 중) 안에서는 lcMainBundle 이 LiveProcess.appex 번들이라 번역 파일이 없어
 // 영문 기본값이 그대로 나온다. 그 경우 LiveContainer 앱 번들(appex 의 두 단계 위)에서 번역을 찾는다.
 func lcLocalizedBundles() -> [Bundle] {
-    var bundles = [UserDefaults.lcMainBundle()]
+    let mainBundle: Bundle = UserDefaults.lcMainBundle()
+    var bundles: [Bundle] = [mainBundle]
     if UserDefaults.isLiveProcess() {
-        let appURL = UserDefaults.lcMainBundle().bundleURL.deletingLastPathComponent().deletingLastPathComponent()
+        let appURL = mainBundle.bundleURL.deletingLastPathComponent().deletingLastPathComponent()
         if let appBundle = Bundle(url: appURL) {
             bundles.insert(appBundle, at: 0)
         }
