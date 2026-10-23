@@ -1,0 +1,210 @@
+{
+  "sourceLanguage" : "en",
+  "version" : "1.0",
+  "strings" : {
+    "Launch App" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Launch App"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 실행"
+          }
+        }
+      }
+    },
+    "Launch URL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Launch URL"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL 실행"
+          }
+        }
+      }
+    },
+    "This action directly launches an app in normal mode in LiveContainer. To get the launch URL, open LiveContainer, hold the app, tap \"Add to Home Screen\" -> \"Copy Launch URL\"" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This action directly launches an app in normal mode in LiveContainer. To get the launch URL, open LiveContainer, hold the app, tap \"Add to Home Screen\" -> \"Copy Launch URL\""
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 동작은 LiveContainer에서 앱을 일반 모드로 바로 실행합니다. 앱을 실행하는 URL을 얻으려면 LiveContainer를 열고 앱을 길게 누른 뒤 “홈 화면에 추가” → “URL 실행 복사”를 선택하세요."
+          }
+        }
+      }
+    },
+    "Failed to start extension %@. To use the Launch App shortcut, reinstall LiveContainer with LaunchAppExtension and ShareExtension installed. If you use SideStore, choose \"Keep App Extensions (Use Main Profile)\". If you use Impactor, choose \"Only Register Main Bundle\". For other sideloaders, select keep all extensions, i.e. DO NOT Remove any extension." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to start extension %@. To use the Launch App shortcut, reinstall LiveContainer with LaunchAppExtension and ShareExtension installed. If you use SideStore, choose \"Keep App Extensions (Use Main Profile)\". If you use Impactor, choose \"Only Register Main Bundle\". For other sideloaders, select keep all extensions, i.e. DO NOT Remove any extension."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "확장 프로그램을 시작하지 못했습니다: %@. 앱 실행 단축어를 사용하려면 LaunchAppExtension과 ShareExtension이 포함된 상태로 LiveContainer를 다시 설치하세요. SideStore를 사용 중이라면 \"앱 확장 프로그램 유지 (메인 프로필 사용)\"를 선택하세요. Impactor를 사용 중이라면 \"메인 번들만 등록\"을 선택하세요. 그 외 사이드로더는 모든 확장 프로그램을 유지하도록 선택하고, 어떤 확장 프로그램도 제거하지 마세요."
+          }
+        }
+      }
+    },
+    "Not a livecontainer URL!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not a livecontainer URL!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveContainer URL이 아닙니다."
+          }
+        }
+      }
+    },
+    "lcSharedDefaults failed to initialize, because no app group was found. Did you sign LiveContainer correctly?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lcSharedDefaults failed to initialize, because no app group was found. Did you sign LiveContainer correctly?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 그룹을 찾을 수 없어 lcSharedDefaults를 초기화하지 못했습니다. LiveContainer를 올바르게 서명했는지 확인해주세요."
+          }
+        }
+      }
+    },
+    "Not a livecontainer launch URL!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not a livecontainer launch URL!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveContainer의 URL 실행 주소가 아닙니다."
+          }
+        }
+      }
+    },
+    "URLComponents failed to initialize." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URLComponents failed to initialize."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URLComponents를 초기화하지 못했습니다."
+          }
+        }
+      }
+    },
+    "No bundle-name parameter found." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No bundle-name parameter found."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bundle-name 매개변수를 찾을 수 없습니다."
+          }
+        }
+      }
+    },
+    "Failed to find AppInfo!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to find AppInfo!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 정보(AppInfo)를 찾지 못했습니다."
+          }
+        }
+      }
+    },
+    "Failed to load AppInfo!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to load AppInfo!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 정보(AppInfo)를 불러오지 못했습니다."
+          }
+        }
+      }
+    },
+    "unable to construct new url" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "unable to construct new url"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새 URL을 만들 수 없습니다."
+          }
+        }
+      }
+    }
+  }
+}

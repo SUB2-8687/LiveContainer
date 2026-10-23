@@ -301,7 +301,7 @@ class LCAppModel: ObservableObject, Hashable {
                     if let url = launchURLComp.url {
                         await UIApplication.shared.open(url)
                     } else {
-                        throw "Unable to build URL from launchURLComp???"
+                        throw "lc.appModel.buildURLFailed".loc
                     }
                     return
                 }
@@ -348,7 +348,7 @@ class LCAppModel: ObservableObject, Hashable {
                             return
                         }
                         guard let pidNumber = pidNumber else {
-                            continuation.resume(throwing: "Failed to obtain PID from LiveProcess")
+                            continuation.resume(throwing: "lc.appModel.pidFailed".loc)
                             return
                         }
                         Task {

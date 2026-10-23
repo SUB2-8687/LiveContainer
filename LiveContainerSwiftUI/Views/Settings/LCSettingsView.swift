@@ -22,11 +22,11 @@ enum JITEnablerType : Int, CaseIterable, Identifiable {
     var displayName: String {
         switch self {
         case .StikJIT: "StikDebug"
-        case .StikJITLC: "StikDebug (Another LiveContainer/Multitask)"
+        case .StikJITLC: "lc.jitEnabler.stikJITLC".loc
         case .StosDebug: "StosDebug"
-        case .StosDebugLC: "StosDebug (Another LiveContainer/Multitask)"
+        case .StosDebugLC: "lc.jitEnabler.stosDebugLC".loc
         case .SideStore: "SideStore"
-        case .JITStreamerEBLegacy: "JitStreamer-EB (Relaunch)"
+        case .JITStreamerEBLegacy: "lc.jitEnabler.jitStreamerEBLegacy".loc
         case .SideJITServer: "SideJITServer/JITStreamer 2.0"
         }
     }
@@ -325,53 +325,53 @@ struct LCSettingsView: View {
                             Text("lc.settings.injectLCItself".loc)
                         }
                         Toggle(isOn: $ignoreJITOnLaunch) {
-                            Text("Ignore JIT on Launching App")
+                            Text("lc.devSettings.ignoreJITOnLaunch".loc)
                         }
                         Toggle(isOn: $keepSelectedWhenQuit) {
-                            Text("Keep Selected App when Quit")
+                            Text("lc.devSettings.keepSelectedWhenQuit".loc)
                         }
                         Toggle(isOn: $waitForDebugger) {
-                            Text("Wait For Debugger")
+                            Text("lc.devSettings.waitForDebugger".loc)
                         }
                         Toggle(isOn: $sharePrivateDataWithLiveProcess) {
-                            Text("Allow Private Data access from LiveProcess")
+                            Text("lc.devSettings.sharePrivateData".loc)
                         }
                         Toggle(isOn: $disableLiveProcessWatchdog) {
-                            Text("Disable LiveProcess watchdog termination")
+                            Text("lc.devSettings.disableWatchdog".loc)
                         }
                         Button {
                             export()
                         } label: {
-                            Text("Export Cert")
+                            Text("lc.devSettings.exportCert".loc)
                         }
                         Button {
                             exportDyld()
                         } label: {
-                            Text("Export Dyld")
+                            Text("lc.devSettings.exportDyld".loc)
                         }
                         Button {
                             Task { await nukeSideStore() }
                         } label: {
-                            Text("Nuke SideStore")
+                            Text("lc.devSettings.nukeSideStore".loc)
                         }
                         Button {
                             exportMainBundle()
                         } label: {
-                            Text("Export Main Bundle")
+                            Text("lc.devSettings.exportMainBundle".loc)
                         }
                         Button {
                             resetSymbolOffsets()
                         } label: {
-                            Text("Reset Symbol Offsets")
+                            Text("lc.devSettings.resetSymbolOffsets".loc)
                         }
                         Button {
                             presentFLEXOverlay()
                         } label: {
-                            Text("Show FLEX Overlay")
+                            Text("lc.devSettings.showFlexOverlay".loc)
                         }
                         .disabled(NSClassFromString("FLEXManager") == nil)
                     } header: {
-                        Text("Developer Settings")
+                        Text("lc.devSettings.title".loc)
                     } footer: {
                         Text("lc.settings.injectLCItselfDesc".loc)
                     }
@@ -602,14 +602,14 @@ struct LCSettingsView: View {
                         errorInfo = "lc.settings.importCertFromBuiltinSideStore.certNotFounndErr".loc
                         errorShow = true
                     } else {
-                        errorInfo = "Keychain read error: \(status)"
+                        errorInfo = "lc.settings.keychainReadError %d".localizeWithFormat(Int(status))
                         errorShow = true
                     }
                     return
                 }
                 
                 guard let data = item as? Data else {
-                    errorInfo = "Failed to decode certificate data"
+                    errorInfo = "lc.settings.certDecodeFailed".loc
                     errorShow = true
                     return
                 }
@@ -646,7 +646,7 @@ struct LCSettingsView: View {
         }
         
         guard let url = URL(string: "\(storeScheme.lowercased())://certificate?callback_template=livecontainer%3A%2F%2Fcertificate%3Fcert%3D%24%28BASE64_CERT%29%26password%3D%24%28PASSWORD%29") else {
-            errorInfo = "Failed to initialize certificate import URL."
+            errorInfo = "lc.settings.certImportURLFailed".loc
             errorShow = true
             return
         }

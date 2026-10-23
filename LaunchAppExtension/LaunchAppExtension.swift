@@ -9,9 +9,9 @@ import AppIntents
 import UIKit
 
 private struct LaunchAppExtensionError: LocalizedError {
-    let message: String
-    init(_ message: String) { self.message = message }
-    var errorDescription: String? { message }
+    let message: LocalizedStringResource
+    init(_ message: LocalizedStringResource) { self.message = message }
+    var errorDescription: String? { String(localized: message) }
 }
 
 struct LaunchAppExtension: AppIntent {
@@ -69,7 +69,7 @@ struct LaunchAppExtension: AppIntent {
                 LaunchAppExtension.ext = ext
             } catch {
                 NSLog("Failed to start extension \(error)")
-                throw LaunchAppExtensionError("Failed to start extension \(error). To use the Launch App shortcut, reinstall LiveContainer with LaunchAppExtension and ShareExtension installed. If you use SideStore, choose \"Keep App Extensions (Use Main Profile)\". If you use Impactor, choose \"Only Register Main Bundle\". For other sideloaders, select keep all extensions, i.e. DO NOT Remove any extension.")
+                throw LaunchAppExtensionError("Failed to start extension \(String(describing: error)). To use the Launch App shortcut, reinstall LiveContainer with LaunchAppExtension and ShareExtension installed. If you use SideStore, choose \"Keep App Extensions (Use Main Profile)\". If you use Impactor, choose \"Only Register Main Bundle\". For other sideloaders, select keep all extensions, i.e. DO NOT Remove any extension.")
             }
             
         }

@@ -110,7 +110,7 @@
                 [self setUpAppPresenter];
             });
         } else {
-            NSError* error = [NSError errorWithDomain:@"LiveProcess" code:2 userInfo:@{NSLocalizedDescriptionKey: @"Failed to start app. Child process has unexpectedly crashed"}];
+            NSError* error = [NSError errorWithDomain:@"LiveProcess" code:2 userInfo:@{NSLocalizedDescriptionKey: @"lc.multitask.childCrashed".loc}];
             [delegate appSceneVC:self didInitializeWithError:error];
         }
     }];

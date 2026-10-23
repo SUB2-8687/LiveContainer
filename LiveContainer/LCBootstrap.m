@@ -3,6 +3,7 @@
 #import "LCSharedUtils.h"
 #import "UIKitPrivate.h"
 #import "utils.h"
+#import "Localization.h"
 
 #include <mach/mach.h>
 #include <mach-o/dyld.h>
@@ -256,7 +257,7 @@ static NSString* invokeAppMain(NSString *selectedApp, NSString *selectedContaine
     if (!LCSharedUtils.certificatePassword && !isSideStore) {
 #if !TARGET_OS_SIMULATOR
         if(@available(iOS 26.0 ,*))  {
-            return @"JITLess mode is required since iOS 26. Please set it up in settings. \nPlease go to LiveContainer settings -> tap \"Import Certificate from SideStore\" / \"Import Certificate\"";
+            return @"lc.launch.jitlessRequired".loc;
         }
 #endif
         // First of all, let's check if we have JIT
@@ -264,7 +265,7 @@ static NSString* invokeAppMain(NSString *selectedApp, NSString *selectedContaine
             usleep(1000*100);
         }
         if (!checkJITEnabled()) {
-            appError = @"JIT was not enabled. If you want to use LiveContainer without JIT, setup JITLess mode in settings.";
+            appError = @"lc.launch.jitNotEnabled".loc;
             return appError;
         }
     }
@@ -296,7 +297,7 @@ static NSString* invokeAppMain(NSString *selectedApp, NSString *selectedContaine
     }
     
     if(!guestAppInfo) {
-        return @"App bundle not found! Unable to read LCAppInfo.plist.";
+        return @"lc.launch.appBundleNotFound".loc;
     }
     
     if([guestAppInfo[@"doUseLCBundleId"] boolValue] ) {
@@ -322,7 +323,7 @@ static NSString* invokeAppMain(NSString *selectedApp, NSString *selectedContaine
     NSBundle *appBundle = [[NSBundle alloc] initWithPathForMainBundle:bundlePath];
     
     if(!appBundle) {
-        return @"App not found";
+        return @"lc.launch.appNotFound".loc;
     }
     
     // find container in Info.plist
@@ -332,7 +333,7 @@ static NSString* invokeAppMain(NSString *selectedApp, NSString *selectedContaine
     }
 
     if(dataUUID == nil) {
-        return @"Container not found!";
+        return @"lc.launch.containerNotFound".loc;
     }
     
     if(isLiveProcess && !isSideStore) {
@@ -402,13 +403,13 @@ static NSString* invokeAppMain(NSString *selectedApp, NSString *selectedContaine
                 NSData* bookmarkData = container[@"bookmarkData"];
                 if(bookmarkData && [bookmarkData isKindOfClass:NSData.class]) {
                     // we will be killed by watchdog before timedout, so we set this error beforehand.
-                    [lcUserDefaults setObject:@"Bookmark resolution timed out. Is the data storage offline?" forKey:@"error"];
+                    [lcUserDefaults setObject:@"lc.launch.bookmarkTimeout".loc forKey:@"error"];
                     NSError* err = nil;
                     BOOL isStale = false;
                     bookmarkURL = [NSURL URLByResolvingBookmarkData:bookmarkData options:0 relativeToURL:nil bookmarkDataIsStale:&isStale error:&err];
                     bool access = [bookmarkURL startAccessingSecurityScopedResource];
                     if(!bookmarkURL || !access) {
-                        return [@"Bookmark resolution failed or unable to access the container. You might need to readd the data storage. %@" stringByAppendingString:err.localizedDescription];
+                        return [NSString stringWithFormat:@"lc.launch.bookmarkFailed %@".loc, err.localizedDescription];
                     }
                     [lcUserDefaults removeObjectForKey:@"error"];
                 }
@@ -494,7 +495,7 @@ static NSString* invokeAppMain(NSString *selectedApp, NSString *selectedContaine
 
     // Overwrite executable info
     if(!appBundle.executablePath) {
-        return @"App's executable path not found. Please try force re-signing or reinstalling this app.";
+        return @"lc.launch.executableNotFound".loc;
     }
 
     NSMutableArray<NSString *> *objcArgv = NSProcessInfo.processInfo.arguments.mutableCopy;
@@ -539,12 +540,12 @@ static NSString* invokeAppMain(NSString *selectedApp, NSString *selectedContaine
     if(is32bit) {
         [lcUserDefaults removeObjectForKey:@"LC32BitTranslationLayerLogFile"];
         if (!isJitEnabled) {
-            return @"JIT is required to run 32-bit apps.";
+            return @"lc.launch.jitRequired32".loc;
         }
         
         NSString *selected32BitLayer = guestAppInfo[@"selected32BitEmulator"] ?: [lcSharedDefaults stringForKey:@"LCSelected32BitEmulator"];
         if(selected32BitLayer.length == 0) {
-            appError = @"No 32-bit emulator selected";
+            appError = @"lc.launch.no32Emulator".loc;
             NSLog(@"[LCBootstrap] %@", appError);
             *path = oldPath;
             return appError;
@@ -554,7 +555,7 @@ static NSString* invokeAppMain(NSString *selectedApp, NSString *selectedContaine
             selected32bitLayerBundle = [NSBundle bundleWithPath:[NSString stringWithFormat:@"%@/Applications/%@", appGroupFolder.path, selected32BitLayer]];
         }
         if(!selected32bitLayerBundle) {
-            appError = @"The specified 32-bit emulator app is not found";
+            appError = @"lc.launch.emulator32NotFound".loc;
             NSLog(@"[LCBootstrap] %@", appError);
             *path = oldPath;
             return appError;
@@ -589,7 +590,7 @@ static NSString* invokeAppMain(NSString *selectedApp, NSString *selectedContaine
         if (dlerr) {
             appError = @(dlerr);
         } else {
-            appError = @"dlopen: an unknown error occurred";
+            appError = @"lc.launch.dlopenUnknown".loc;
         }
         NSLog(@"[LCBootstrap] %@", appError);
         *path = oldPath;
@@ -633,7 +634,7 @@ static NSString* invokeAppMain(NSString *selectedApp, NSString *selectedContaine
     // Find main()
     appMain = getAppEntryPoint(appHandle);
     if (!appMain) {
-        appError = @"Could not find the main entry point";
+        appError = @"lc.launch.noMainEntry".loc;
         NSLog(@"[LCBootstrap] %@", appError);
         *path = oldPath;
         return appError;
@@ -649,7 +650,7 @@ static NSString* invokeAppMain(NSString *selectedApp, NSString *selectedContaine
         char *argv32[] = {(char*)appExecPath, (char*)*path, NULL};
         ret = appMain(sizeof(argv32)/sizeof(*argv32) - 1, argv32, environ);
     }
-    return [NSString stringWithFormat:@"App returned from its main function with code %d.", ret];
+    return [NSString stringWithFormat:@"lc.launch.returnedMain %d".loc, ret];
 }
 
 static void exceptionHandler(NSException *exception) {

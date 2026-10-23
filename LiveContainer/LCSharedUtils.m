@@ -2,6 +2,7 @@
 #import "FoundationPrivate.h"
 #import "UIKitPrivate.h"
 #import "utils.h"
+#import "Localization.h"
 @import MachO;
 
 extern NSUserDefaults *lcUserDefaults;
@@ -21,7 +22,7 @@ NSString* FBSOpenApplicationOptionKeyPayloadURL = @"__PayloadURL";
         void* taskSelf = SecTaskCreateFromSelf(NULL);
         CFErrorRef error = NULL;
         CFTypeRef cfans = SecTaskCopyValueForEntitlement(taskSelf, CFSTR("com.apple.developer.team-identifier"), &error);
-        if(CFGetTypeID(cfans) == CFStringGetTypeID()) {
+        if(cfans && CFGetTypeID(cfans) == CFStringGetTypeID()) {
             ans = (__bridge NSString*)cfans;
         }
         CFRelease(taskSelf);
@@ -35,6 +36,8 @@ NSString* FBSOpenApplicationOptionKeyPayloadURL = @"__PayloadURL";
                 (__bridge NSString *)kSecAttrAccount : tempAccountName,
                 (__bridge NSString *)kSecAttrService : @"",
                 (__bridge NSString *)kSecReturnAttributes: (__bridge NSNumber *)kCFBooleanTrue,
+                // 기본값(WhenUnlocked)이면 잠금 화면 자동화에서 키체인 조회가 실패해 팀 ID/앱 그룹을 못 찾는다
+                (__bridge NSString *)kSecAttrAccessible : (__bridge NSString *)kSecAttrAccessibleAfterFirstUnlock,
             };
             CFDictionaryRef result = nil;
             OSStatus status = SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef *)&result);
@@ -57,10 +60,11 @@ NSString* FBSOpenApplicationOptionKeyPayloadURL = @"__PayloadURL";
     static dispatch_once_t once;
     static NSString *appGroupID = @"Unknown";
     dispatch_once(&once, ^{
-        NSArray* possibleAppGroups = @[
-            [@"group.com.SideStore.SideStore." stringByAppendingString:[self teamIdentifier]],
-            [@"group.com.rileytestut.AltStore." stringByAppendingString:[self teamIdentifier]]
-        ];
+        NSString* teamId = [self teamIdentifier];
+        NSArray* possibleAppGroups = teamId ? @[
+            [@"group.com.SideStore.SideStore." stringByAppendingString:teamId],
+            [@"group.com.rileytestut.AltStore." stringByAppendingString:teamId]
+        ] : @[];
         
         // we prefer app groups with "Apps" in it, which indicate this app group is actually used by the store.
         for (NSString *group in possibleAppGroups) {
@@ -313,7 +317,7 @@ NSString* FBSOpenApplicationOptionKeyPayloadURL = @"__PayloadURL";
     
     // something went wrong with app group
     if(!appGroupFolder && sharedDataFoldersToMove.count > 0) {
-        [lcUserDefaults setObject:@"LiveContainer was unable to move the data of shared app back because LiveContainer cannot access app group. Please check JITLess diagnose page in LiveContainer settings for more information." forKey:@"error"];
+        [lcUserDefaults setObject:@"lc.shared.moveBackFailed".loc forKey:@"error"];
         return;
     }
     

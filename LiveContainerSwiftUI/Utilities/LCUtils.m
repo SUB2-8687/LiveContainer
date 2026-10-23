@@ -7,6 +7,7 @@
 
 #import "LCUtils.h"
 #import "../../LiveContainer/LCSharedUtils.h"
+#import "../../LiveContainer/Localization.h"
 #import "LCAppInfo.h"
 #import "../../MultitaskSupport/DecoratedAppSceneViewController.h"
 #import "../../ZSign/zsigner.h"
@@ -57,7 +58,7 @@
 
 + (void)launchMultitaskGuestApp:(NSString *)displayName completionHandler:(void (^)(NSNumber *pid, NSError *error))completionHandler {
     if(!self.liveProcessBundleIdentifier) {
-        NSError *error = [NSError errorWithDomain:displayName code:2 userInfo:@{NSLocalizedDescriptionKey: @"LiveProcess extension not found. Please reinstall LiveContainer and select Keep Extensions"}];
+        NSError *error = [NSError errorWithDomain:displayName code:2 userInfo:@{NSLocalizedDescriptionKey: @"lc.utils.liveProcessNotFound".loc}];
         if (completionHandler) completionHandler(nil, error);
         return;
     }
@@ -100,9 +101,9 @@
     const char* dlerr = dlerror();
     if (!handle || (uint64_t)handle > 0xf00000000000) {
         if (dlerr) {
-            *error = [NSError errorWithDomain:NSBundle.mainBundle.bundleIdentifier code:1 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Failed to load ZSign: %s", dlerr]}];
+            *error = [NSError errorWithDomain:NSBundle.mainBundle.bundleIdentifier code:1 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"lc.utils.zsignLoadFailed %s".loc, dlerr]}];
         } else {
-            *error = [NSError errorWithDomain:NSBundle.mainBundle.bundleIdentifier code:1 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Failed to load ZSign: An unknown error occurred."]}];
+            *error = [NSError errorWithDomain:NSBundle.mainBundle.bundleIdentifier code:1 userInfo:@{NSLocalizedDescriptionKey: @"lc.utils.zsignLoadUnknown".loc}];
         }
         NSLog(@"[LC] %s", dlerr);
         return;
@@ -404,7 +405,7 @@
     [LCUtils loadStoreFrameworksWithError2:error];
     BOOL adhocSignSuccess = [NSClassFromString(@"ZSigner") adhocSignMachOAtPath:execFromPath.path bundleId:infoDict[@"CFBundleIdentifier"] entitlementData:newEntitlementData];
     if (!adhocSignSuccess) {
-        *error = [NSError errorWithDomain:@"archiveIPAWithBundleName" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"Failed to adhoc sign main executable!"}];
+        *error = [NSError errorWithDomain:@"archiveIPAWithBundleName" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"lc.utils.adhocSignFailed".loc}];
         return nil;
     }
     

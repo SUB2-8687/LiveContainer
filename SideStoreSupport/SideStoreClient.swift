@@ -12,6 +12,7 @@ import OSLog
 enum SideStoreIntentError: LocalizedError {
     case typeNotFound(String)
     case typeIsNotAppIntent(String)
+    case actionNotFound
 
     var errorDescription: String? {
         switch self {
@@ -19,6 +20,8 @@ enum SideStoreIntentError: LocalizedError {
             return "SideStore refresh intent type was not found: \(name)"
         case .typeIsNotAppIntent(let name):
             return "SideStore type is not an AppIntent: \(name)"
+        case .actionNotFound:
+            return NSLocalizedString("lc.sidestore.actionNotFound", bundle: UserDefaults.lcMainBundle(), value: "Couldn't find the SideStore refresh action. In the built-in SideStore, reinstall the LiveContainer+SideStore IPA from My Apps, then run the shortcut again.", comment: "")
         }
     }
 }
@@ -64,8 +67,41 @@ struct SideStoreIntentCaller {
         let _ = try await intent.perform()
     }
     
+    // LNPerformActionErrorCodeActionNotFound 판별
+    private func isActionNotFound(_ error: Error) -> Bool {
+        let ns = error as NSError
+        let text = "\(ns.domain) \(ns.localizedDescription) \(String(describing: error))".lowercased()
+        if text.contains("actionnotfound") || text.contains("action not found") {
+            return true
+        }
+        return ns.domain.lowercased().contains("lnperformaction") && text.contains("not found")
+    }
+    
     // call this when no IntentContext exists (when sidestore is loaded in LiveProcess)
+    // 업데이트 직후나 SideStore 시작 직후에는 인텐트 등록이 늦어 ActionNotFound 가 일시적으로 나올 수 있어 짧게 재시도한다
     func callRefreshIntent2(identifier: String, mangledTypeName: String, progressCallback: (Progress)->Void ) async throws {
+        let maxAttempts = 3
+        var attempt = 0
+        while true {
+            attempt += 1
+            do {
+                try await callRefreshIntentOnce(identifier: identifier, mangledTypeName: mangledTypeName, progressCallback: progressCallback)
+                return
+            } catch {
+                guard isActionNotFound(error) else {
+                    throw error
+                }
+                if attempt >= maxAttempts {
+                    NSLog("[LC] SideStore 새로고침 동작을 찾지 못했습니다 (\(attempt)회 시도): \(error)")
+                    throw SideStoreIntentError.actionNotFound
+                }
+                NSLog("[LC] SideStore 새로고침 동작을 찾지 못해 다시 시도합니다 (\(attempt)/\(maxAttempts)): \(error)")
+                try? await Task.sleep(nanoseconds: 1_500_000_000)
+            }
+        }
+    }
+    
+    private func callRefreshIntentOnce(identifier: String, mangledTypeName: String, progressCallback: (Progress)->Void ) async throws {
         try await withUnsafeThrowingContinuation { (c: UnsafeContinuation<(), any Error>) in
             let parent = PrivateIntentRunner.run(
                         identifier: identifier,

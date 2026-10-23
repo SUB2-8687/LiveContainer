@@ -6,6 +6,7 @@
 #import "LCAppInfo.h"
 #import "LCUtils.h"
 #import "../../LiveContainer/LCSharedUtils.h"
+#import "../../LiveContainer/Localization.h"
 
 
 @implementation LCAppInfo
@@ -105,7 +106,7 @@
     } else if (_infoPlist[@"CFBundleExecutable"]) {
         return _infoPlist[@"CFBundleExecutable"];
     } else {
-        return @"App Corrupted, Please Reinstall This App";
+        return @"lc.appInfo.corrupted".loc;
     }
 }
 
@@ -260,7 +261,7 @@
         @"IgnoreManifestScope": @YES,
         @"IsRemovable": @YES,
         @"Label": self.displayName,
-        @"PayloadDescription": [NSString stringWithFormat:@"Web Clip for launching %@ (%@) in LiveContainer", self.displayName, self.bundlePath.lastPathComponent],
+        @"PayloadDescription": [NSString stringWithFormat:@"lc.webClip.description %@ %@".loc, self.displayName, self.bundlePath.lastPathComponent],
         @"PayloadDisplayName": self.displayName,
         @"PayloadIdentifier": self.bundleIdentifier,
         @"PayloadType": @"com.apple.webClip.managed",
@@ -272,7 +273,7 @@
     };
     return @{
         @"ConsentText": @{
-            @"default": [NSString stringWithFormat:@"This profile installs a web clip which opens %@ (%@) in LiveContainer", self.displayName, self.bundlePath.lastPathComponent]
+            @"default": [NSString stringWithFormat:@"lc.webClip.consent %@ %@".loc, self.displayName, self.bundlePath.lastPathComponent]
         },
         @"PayloadContent": @[payload],
         @"PayloadDescription": payload[@"PayloadDescription"],
@@ -339,7 +340,7 @@
         });
         is32bit = !has64bitSlice;
         if (isEncrypted) {
-            error = @"The app you tried to install is encrypted. Please provide decrypted app.";
+            error = @"lc.appInfo.encrypted".loc;
         }
         if (error) {
             [NSUserDefaults.standardUserDefaults removeObjectForKey:@"SigningInProgress"];

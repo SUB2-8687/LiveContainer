@@ -164,7 +164,7 @@ extension LCUtils {
         case .ADP:
             return "ADP"
         default:
-            return "Unknown Store"
+            return "lc.common.unknownStore".loc
         }
     }
     
@@ -228,20 +228,20 @@ extension LCUtils {
                 return false
             }
             
-            onServerMessage?("Please make sure the VPN is connected if the server is not in your local network.")
+            onServerMessage?("lc.jitMsg.vpn".loc)
             
             do {
                 let launchJITUrlStr = "\(sideJITServerAddress)/\(deviceUDID)/\(Bundle.main.bundleIdentifier ?? "")"
                 guard let launchJITUrl = URL(string: launchJITUrlStr) else { return false }
                 let session = URLSession.shared
                 
-                onServerMessage?("Contacting SideJITServer at \(sideJITServerAddress)...")
+                onServerMessage?("lc.jitMsg.contactingSideJIT %@".localizeWithFormat(sideJITServerAddress))
                 let request = URLRequest(url: launchJITUrl)
                 let (data, _) = try await session.data(for: request)
                 onServerMessage?(String(decoding: data, as: UTF8.self))
                 
             } catch {
-                onServerMessage?("Failed to contact SideJITServer: \(error)")
+                onServerMessage?("lc.jitMsg.sideJITFailed %@".localizeWithFormat("\(error)"))
             }
             
             return false
@@ -251,11 +251,11 @@ extension LCUtils {
                 JITStresmerEBAddress = "http://[fd00::]:9172"
             }
             
-            onServerMessage?("Please make sure the VPN is connected if the server is not in your local network.")
+            onServerMessage?("lc.jitMsg.vpn".loc)
             
             do {
                 
-                onServerMessage?("Contacting JitStreamer-EB server at \(JITStresmerEBAddress)...")
+                onServerMessage?("lc.jitMsg.contactingEB %@".localizeWithFormat(JITStresmerEBAddress))
                 
                 let session = URLSession.shared
                 let decoder = JSONDecoder()
@@ -265,16 +265,16 @@ extension LCUtils {
                 let mountRequest = URLRequest(url: mountStatusUrl)
                 
                 // check mount status
-                onServerMessage?("Checking mount status...")
+                onServerMessage?("lc.jitMsg.checkingMount".loc)
                 let (mountData, _) = try await session.data(for: mountRequest)
                 let mountResponseObj = try decoder.decode(JITStreamerEBMountResponse.self, from: mountData)
                 guard mountResponseObj.ok else {
-                    onServerMessage?(mountResponseObj.error ?? "Mounting failed with unknown error.")
+                    onServerMessage?(mountResponseObj.error ?? "lc.jitMsg.mountFailed".loc)
                     return false
                 }
                 if mountResponseObj.mounting {
-                    onServerMessage?("Your device is currently mounting the developer disk image. Leave your device on and connected. Once this finishes, you can run JitStreamer again.")
-                    onServerMessage?("Check \(JITStresmerEBAddress)/mount_status for mounting status.")
+                    onServerMessage?("lc.jitMsg.mountingDDI".loc)
+                    onServerMessage?("lc.jitMsg.checkMountStatus %@".localizeWithFormat(JITStresmerEBAddress))
                     if let mountStatusUrl = URL(string: "\(JITStresmerEBAddress)/mount_status") {
                         await UIApplication.shared.open(mountStatusUrl)
                     }
@@ -283,17 +283,17 @@ extension LCUtils {
                 
                 // open safari to use /launch_app api
                 if let mountStatusUrl = URL(string: "\(JITStresmerEBAddress)/launch_app/\(Bundle.main.bundleIdentifier!)") {
-                    onServerMessage?("JIT acquisition will continue in the default browser.")
+                    onServerMessage?("lc.jitMsg.continueInBrowser".loc)
                     await UIApplication.shared.open(mountStatusUrl)
                 }
                 return false
                 
                 
             } catch {
-                onServerMessage?("Failed to contact JitStreamer-EB server: \(error)")
+                onServerMessage?("lc.jitMsg.ebFailed %@".localizeWithFormat("\(error)"))
             }
         } else if jitEnabler == .StosDebug || jitEnabler == .StosDebugLC {
-            guard let appName else { onServerMessage?("Unable to get App Name, Please try again."); return false }
+            guard let appName else { onServerMessage?("lc.jitMsg.noAppName".loc); return false }
             var launchURLStr = "stosdebug://enableJIT?bundleId=\(Bundle.main.bundleIdentifier!)&appName=\(appName)"
             
             if let script = script, !script.isEmpty {
@@ -318,12 +318,12 @@ extension LCUtils {
                     }
                 }
                 guard let appToLaunch else {
-                    onServerMessage?("StosDebug is not installed in LiveContainer.")
+                    onServerMessage?("lc.jitMsg.stosNotInstalled".loc)
                     return false
                 }
                 
                 if !appToLaunch.uiIsShared {
-                    onServerMessage?("StosDebug is installed in LiveContainer, but is not a shared app. Convert it to a shared app to continue.")
+                    onServerMessage?("lc.jitMsg.stosNotShared".loc)
                     return false
                 }
                 // check if stosdebug is already running
@@ -337,7 +337,7 @@ extension LCUtils {
                     }
                 }
                 guard let freeScheme else {
-                    onServerMessage?("No free LiveContainer is available. Please either: \n(1)close one, \n(2)install a new one, \n(3)choose another method to enable JIT.")
+                    onServerMessage?("lc.jitMsg.noFreeLC".loc)
                     return false
                 }
                 
@@ -345,11 +345,11 @@ extension LCUtils {
                 LCUtils.appGroupUserDefault.set(freeScheme, forKey: "LCLaunchExtensionScheme")
                 LCUtils.appGroupUserDefault.set(appToLaunch.appInfo.relativeBundlePath, forKey: "LCLaunchExtensionBundleID")
                 LCUtils.appGroupUserDefault.set(Date.now, forKey: "LCLaunchExtensionLaunchDate")
-                onServerMessage?("JIT acquisition will continue in another LiveContainer.")
+                onServerMessage?("lc.jitMsg.continueInAnotherLC".loc)
                 
                 await UIApplication.shared.open(launchURL)
             } else {
-                onServerMessage?("JIT acquisition will continue in StosDebug.")
+                onServerMessage?("lc.jitMsg.continueInStos".loc)
                 
                 await UIApplication.shared.open(URL(string: launchURLStr)!)
             }
@@ -379,12 +379,12 @@ extension LCUtils {
                     }
                 }
                 guard let appToLaunch else {
-                    onServerMessage?("StikDebug is not installed in LiveContainer.")
+                    onServerMessage?("lc.jitMsg.stikNotInstalled".loc)
                     return false
                 }
                 
                 if !appToLaunch.uiIsShared {
-                    onServerMessage?("StikDebug is installed in LiveContainer, but is not a shared app. Convert it to a shared app to continue.")
+                    onServerMessage?("lc.jitMsg.stikNotShared".loc)
                     return false
                 }
                 // check if stikdebug is already running
@@ -398,7 +398,7 @@ extension LCUtils {
                     }
                 }
                 guard let freeScheme else {
-                    onServerMessage?("No free LiveContainer is available. Please either: \n(1)close one, \n(2)install a new one, \n(3)choose another method to enable JIT.")
+                    onServerMessage?("lc.jitMsg.noFreeLC".loc)
                     return false
                 }
                 
@@ -406,15 +406,15 @@ extension LCUtils {
                 LCUtils.appGroupUserDefault.set(freeScheme, forKey: "LCLaunchExtensionScheme")
                 LCUtils.appGroupUserDefault.set(appToLaunch.appInfo.relativeBundlePath, forKey: "LCLaunchExtensionBundleID")
                 LCUtils.appGroupUserDefault.set(Date.now, forKey: "LCLaunchExtensionLaunchDate")
-                onServerMessage?("JIT acquisition will continue in another LiveContainer.")
+                onServerMessage?("lc.jitMsg.continueInAnotherLC".loc)
                 
             } else {
                 launchURL = URL(string: launchURLStr)!
-                onServerMessage?("JIT acquisition will continue in StikDebug.")
+                onServerMessage?("lc.jitMsg.continueInStik".loc)
             }
             await UIApplication.shared.open(launchURL)
         } else if jitEnabler == .SideStore {
-            onServerMessage?("JIT acquisition will continue in SideStore.")
+            onServerMessage?("lc.jitMsg.continueInSideStore".loc)
             let launchURL = URL(string: "sidestore://enable-jit?bundle-id=\(Bundle.main.bundleIdentifier!)")!
             await UIApplication.shared.open(launchURL)
         }

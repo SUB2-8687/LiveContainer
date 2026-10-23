@@ -334,31 +334,31 @@ enum BatchMoveError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .emptySource(let url):
-            return "Source URL is invalid: \(url)"
+            return "lc.move.emptySource %@".localizeWithFormat("\(url)")
         case .sourceDoesNotExist(let url):
-            return "Source does not exist: \(url.path)"
+            return "lc.move.sourceDoesNotExist %@".localizeWithFormat(url.path)
         case .sourceIsNotReachable(let url, let error):
-            return "Source is not reachable: \(url.path). \(error)"
+            return "lc.move.sourceNotReachable %@ %@".localizeWithFormat(url.path, "\(error)")
         case .sourceParentIsNotWritable(let url):
-            return "Source parent is not writable: : \(url.path)"
+            return "lc.move.sourceParentNotWritable %@".localizeWithFormat(url.path)
         case .destinationAlreadyExists(let url):
-            return "Destination already exists: \(url.path). Delete or rename this file/folder to continue."
+            return "lc.move.destinationExists %@".localizeWithFormat(url.path)
         case .destinationParentDoesNotExist(let url):
-            return "Destination parent directory does not exist: \(url.path)"
+            return "lc.move.destParentMissing %@".localizeWithFormat(url.path)
         case .destinationParentIsNotDirectory(let url):
-            return "Destination parent is not a directory: \(url.path)"
+            return "lc.move.destParentNotDir %@".localizeWithFormat(url.path)
         case .destinationParentIsNotWritable(let url):
-            return "Destination parent is not writable: \(url.path)"
+            return "lc.move.destParentNotWritable %@".localizeWithFormat(url.path)
         case .duplicateSource(let url):
-            return "Duplicate source URL in move list: \(url.path)"
+            return "lc.move.duplicateSource %@".localizeWithFormat(url.path)
         case .duplicateDestination(let url):
-            return "Duplicate destination URL in move list: \(url.path)"
+            return "lc.move.duplicateDest %@".localizeWithFormat(url.path)
         case .sourceEqualsDestination(let url):
-            return "Source and destination are the same: \(url.path)"
+            return "lc.move.sameSourceDest %@".localizeWithFormat(url.path)
         case .moveWouldPlaceDirectoryInsideItself(let source, let destination):
-            return "Cannot move directory \(source.path) inside itself at \(destination.path)"
+            return "lc.move.insideItself %@ %@".localizeWithFormat(source.path, destination.path)
         case .moveFailed(let source, let destination, let error):
-            return "Failed to move \(source.path) to \(destination.path). \(error)"
+            return "lc.move.failed %@ %@ %@".localizeWithFormat(source.path, destination.path, "\(error)")
         }
     }
 

@@ -67,7 +67,12 @@ public struct RefreshAllAppsIntent: AppIntent, CustomIntentMigratedAppIntent, Pr
 }
 
 
+private func lcRefreshError(_ key: String, _ fallback: String) -> NSError {
+    return NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString(key, bundle: UserDefaults.lcMainBundle(), value: fallback, comment: "")])
+}
+
 class RefreshHandler: NSObject, RefreshServer {
+    var refreshToken: UUID? = nil
     var c: UnsafeContinuation<(), any Error>? = nil
     var launchContinuation: UnsafeContinuation<(), any Error>? = nil
     var progress: Progress? = nil
@@ -85,24 +90,33 @@ class RefreshHandler: NSObject, RefreshServer {
         }
         
         if c != nil {
-            throw NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: "Another refresh task is in progress."])
+            throw NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("lc.sidestore.refreshInProgress", bundle: UserDefaults.lcMainBundle(), comment: "")])
         }
         
         if listener == nil {
+            // 조용히 return 하면 단축어가 "새로고침 완료"로 오인하므로 오류를 던진다
             guard let listener = startAnonymousListener(self) else {
-                return
+                NSLog("[LC] SideStore 새로고침: XPC 리스너를 시작하지 못했습니다")
+                throw lcRefreshError("lc.sidestore.notReady", "Couldn't connect to the built-in SideStore. Please try again.")
             }
             self.listener = listener
         }
         guard let listener = self.listener else {
-            return
+            throw lcRefreshError("lc.sidestore.notReady", "Couldn't connect to the built-in SideStore. Please try again.")
         }
 
         // launch SideStore if it's not running
         if (sideStorePid <= 0 || getpgid(sideStorePid) <= 0) && launchContinuation == nil {
-            let lcHome = String(cString:getenv("LC_HOME_PATH"))
+            guard let lcHomePtr = getenv("LC_HOME_PATH") else {
+                NSLog("[LC] SideStore 새로고침: LC_HOME_PATH 환경 변수가 없습니다")
+                throw lcRefreshError("lc.sidestore.homeMissing", "Couldn't find the built-in SideStore data folder. Open the built-in SideStore once, then try again.")
+            }
+            let lcHome = String(cString: lcHomePtr)
             let sideStoreHomeURL = URL(fileURLWithPath: lcHome).appendingPathComponent("Documents/SideStore")
-            let bookmarkData = bookmarkForURL(sideStoreHomeURL)!
+            guard let bookmarkData = bookmarkForURL(sideStoreHomeURL) else {
+                NSLog("[LC] SideStore 새로고침: 데이터 폴더 북마크를 만들지 못했습니다 (\(sideStoreHomeURL.path))")
+                throw lcRefreshError("lc.sidestore.homeMissing", "Couldn't find the built-in SideStore data folder. Open the built-in SideStore once, then try again.")
+            }
 
             // start LiveProcess
             let extensionItem = NSExtensionItem()
@@ -127,7 +141,7 @@ class RefreshHandler: NSObject, RefreshServer {
                 throw NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to start extension \(error). To use the Refresh All Apps shortcut, reinstall LiveContainer+SideStore with LiveProcess installed. If you use SideStore, choose \"Keep App Extensions (Use Main Profile)\". If you use Impactor, choose \"Only Register Main Bundle\". For other sideloaders, select keep all extensions, i.e. DO NOT Remove any extension."])
             }
             guard let ext else {
-                return
+                throw lcRefreshError("lc.sidestore.notReady", "Couldn't connect to the built-in SideStore. Please try again.")
             }
             self.ext = ext
             
@@ -135,6 +149,9 @@ class RefreshHandler: NSObject, RefreshServer {
                 self.c?.resume(throwing: NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: "Built-in SideStore quit unexpectedly"]))
                 self.c = nil
                 self.sideStorePid = 0
+                self.client = nil
+                // 시작 대기 중이던 continuation 도 반드시 깨워서 단축어가 멈춰 있지 않게 한다
+                self.launchContinuation?.resume(throwing: NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: "Built-in SideStore quit unexpectedly"]))
                 self.launchContinuation = nil
             }
             
@@ -145,17 +162,31 @@ class RefreshHandler: NSObject, RefreshServer {
                 self.launchContinuation = c
                 DispatchQueue.main.asyncAfter(deadline: .now() + 300) {
                     if let c = self.launchContinuation {
-                        c.resume(throwing: NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: "Built-in SideStore failed to start in reasonable time"]))
+                        c.resume(throwing: NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("lc.sidestore.startTimeout", bundle: UserDefaults.lcMainBundle(), comment: "")]))
                         self.launchContinuation = nil
                         ext._kill(9)
                     }
                 }
             }
         }
-        self.client?.refreshAllApps(withIdentifier: identifier, mangledTypeName: mangledName)
+        // client 가 없으면 요청이 전달되지 않고 영원히 대기하게 되므로 오류로 처리
+        guard let client = self.client else {
+            NSLog("[LC] SideStore 새로고침: SideStore 와의 연결(client)이 없습니다")
+            throw lcRefreshError("lc.sidestore.notReady", "Couldn't connect to the built-in SideStore. Please try again.")
+        }
         
         try await withUnsafeThrowingContinuation { c in
             self.c = c
+            // 응답이 끝내 오지 않는 경우를 대비한 안전장치 (15분)
+            let token = UUID()
+            self.refreshToken = token
+            DispatchQueue.main.asyncAfter(deadline: .now() + 900) {
+                if self.refreshToken == token, let pending = self.c {
+                    pending.resume(throwing: lcRefreshError("lc.sidestore.refreshTimeout", "The refresh took too long and was cancelled."))
+                    self.c = nil
+                }
+            }
+            client.refreshAllApps(withIdentifier: identifier, mangledTypeName: mangledName)
         }
         
     }
