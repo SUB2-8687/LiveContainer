@@ -17,11 +17,11 @@ enum SideStoreIntentError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .typeNotFound(let name):
-            return "SideStore refresh intent type was not found: \(name)"
+            return lcLocalizedFormat("lc.sidestore.typeNotFound", "SideStore refresh intent type was not found: %@", name)
         case .typeIsNotAppIntent(let name):
-            return "SideStore type is not an AppIntent: \(name)"
+            return lcLocalizedFormat("lc.sidestore.typeNotIntent", "SideStore type is not an AppIntent: %@", name)
         case .actionNotFound:
-            return NSLocalizedString("lc.sidestore.actionNotFound", bundle: UserDefaults.lcMainBundle(), value: "Couldn't find the SideStore refresh action. In the built-in SideStore, reinstall the LiveContainer+SideStore IPA from My Apps, then run the shortcut again.", comment: "")
+            return lcLocalized("lc.sidestore.actionNotFound", "Couldn't find the SideStore refresh action. In the built-in SideStore, reinstall the LiveContainer+SideStore IPA from My Apps, then run the shortcut again.")
         }
     }
 }
@@ -93,7 +93,16 @@ struct SideStoreIntentCaller {
                 }
                 if attempt >= maxAttempts {
                     NSLog("[LC] SideStore 새로고침 동작을 찾지 못했습니다 (\(attempt)회 시도): \(error)")
-                    throw SideStoreIntentError.actionNotFound
+                    // 시스템에 인텐트가 등록되지 않았더라도(Nightly 업데이트 후 Refresh All Apps 동작이 사라지는 경우 등)
+                    // SideStore 프로세스 안에 인텐트 타입이 있으면 직접 실행해 새로고침을 시도한다
+                    do {
+                        NSLog("[LC] 인텐트 직접 실행으로 새로고침을 시도합니다")
+                        try await callRefreshIntent(mangledTypeName: mangledTypeName)
+                        return
+                    } catch {
+                        NSLog("[LC] 인텐트 직접 실행도 실패했습니다: \(error)")
+                        throw SideStoreIntentError.actionNotFound
+                    }
                 }
                 NSLog("[LC] SideStore 새로고침 동작을 찾지 못해 다시 시도합니다 (\(attempt)/\(maxAttempts)): \(error)")
                 try? await Task.sleep(nanoseconds: 1_500_000_000)

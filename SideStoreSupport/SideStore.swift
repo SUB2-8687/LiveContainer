@@ -67,8 +67,35 @@ public struct RefreshAllAppsIntent: AppIntent, CustomIntentMigratedAppIntent, Pr
 }
 
 
-private func lcRefreshError(_ key: String, _ fallback: String) -> NSError {
-    return NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString(key, bundle: UserDefaults.lcMainBundle(), value: fallback, comment: "")])
+// LiveProcess(SideStore 실행 중) 안에서는 lcMainBundle 이 LiveProcess.appex 번들이라 번역 파일이 없어
+// 영문 기본값이 그대로 나온다. 그 경우 LiveContainer 앱 번들(appex 의 두 단계 위)에서 번역을 찾는다.
+func lcLocalizedBundles() -> [Bundle] {
+    var bundles = [UserDefaults.lcMainBundle()]
+    if UserDefaults.isLiveProcess() {
+        let appURL = UserDefaults.lcMainBundle().bundleURL.deletingLastPathComponent().deletingLastPathComponent()
+        if let appBundle = Bundle(url: appURL) {
+            bundles.insert(appBundle, at: 0)
+        }
+    }
+    return bundles
+}
+
+func lcLocalized(_ key: String, _ fallback: String) -> String {
+    for bundle in lcLocalizedBundles() {
+        let text = bundle.localizedString(forKey: key, value: "", table: nil)
+        if !text.isEmpty && text != key {
+            return text
+        }
+    }
+    return fallback
+}
+
+func lcLocalizedFormat(_ key: String, _ fallback: String, _ args: CVarArg...) -> String {
+    return String(format: lcLocalized(key, fallback), arguments: args)
+}
+
+func lcRefreshError(_ key: String, _ fallback: String) -> NSError {
+    return NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: lcLocalized(key, fallback)])
 }
 
 class RefreshHandler: NSObject, RefreshServer {
@@ -85,12 +112,12 @@ class RefreshHandler: NSObject, RefreshServer {
     
     func startRefresh(identifier: String, mangledName: String) async throws {
         if sideStorePid <= 0 || getpgid(sideStorePid) <= 0, let c {
-            c.resume(throwing: NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: "Built-in SideStore quit unexpectedly"]))
+            c.resume(throwing: lcRefreshError("lc.sidestore.quitUnexpectedly", "Built-in SideStore quit unexpectedly"))
             self.c = nil
         }
         
         if c != nil {
-            throw NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("lc.sidestore.refreshInProgress", bundle: UserDefaults.lcMainBundle(), comment: "")])
+            throw lcRefreshError("lc.sidestore.refreshInProgress", "Another refresh task is in progress.")
         }
         
         if listener == nil {
@@ -130,7 +157,7 @@ class RefreshHandler: NSObject, RefreshServer {
                   let liveProcessBundle = Bundle(url: liveProcessURL)
             else {
                 NSLog("Unable to locate LiveProcess bundle")
-                throw NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: "Unable to locate LiveProcess bundle. To use the Refresh All Apps shortcut, reinstall LiveContainer+SideStore with LiveProcess installed. If you use SideStore, choose \"Keep App Extensions (Use Main Profile)\". If you use PlumeImpactor, choose \"Only Register Main Bundle\". For other sideloaders, select keep all extensions, i.e. DO NOT Remove any extension."])
+                throw lcRefreshError("lc.sidestore.liveProcessMissing", "Unable to locate LiveProcess bundle. Reinstall LiveContainer+SideStore with all app extensions kept.")
             }
             
             var ext : NSExtension?
@@ -138,7 +165,7 @@ class RefreshHandler: NSObject, RefreshServer {
                 ext = try NSExtension(identifier: liveProcessBundle.bundleIdentifier)
             } catch {
                 NSLog("Failed to start extension \(error)")
-                throw NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to start extension \(error). To use the Refresh All Apps shortcut, reinstall LiveContainer+SideStore with LiveProcess installed. If you use SideStore, choose \"Keep App Extensions (Use Main Profile)\". If you use Impactor, choose \"Only Register Main Bundle\". For other sideloaders, select keep all extensions, i.e. DO NOT Remove any extension."])
+                throw NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: lcLocalizedFormat("lc.sidestore.extensionFailed", "Failed to start extension %@. Reinstall LiveContainer+SideStore with all app extensions kept.", String(describing: error))])
             }
             guard let ext else {
                 throw lcRefreshError("lc.sidestore.notReady", "Couldn't connect to the built-in SideStore. Please try again.")
@@ -146,12 +173,12 @@ class RefreshHandler: NSObject, RefreshServer {
             self.ext = ext
             
             ext.setRequestInterruptionBlock { uuid in
-                self.c?.resume(throwing: NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: "Built-in SideStore quit unexpectedly"]))
+                self.c?.resume(throwing: lcRefreshError("lc.sidestore.quitUnexpectedly", "Built-in SideStore quit unexpectedly"))
                 self.c = nil
                 self.sideStorePid = 0
                 self.client = nil
                 // 시작 대기 중이던 continuation 도 반드시 깨워서 단축어가 멈춰 있지 않게 한다
-                self.launchContinuation?.resume(throwing: NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: "Built-in SideStore quit unexpectedly"]))
+                self.launchContinuation?.resume(throwing: lcRefreshError("lc.sidestore.quitUnexpectedly", "Built-in SideStore quit unexpectedly"))
                 self.launchContinuation = nil
             }
             
@@ -162,7 +189,7 @@ class RefreshHandler: NSObject, RefreshServer {
                 self.launchContinuation = c
                 DispatchQueue.main.asyncAfter(deadline: .now() + 300) {
                     if let c = self.launchContinuation {
-                        c.resume(throwing: NSError(domain: "SideStore", code: 1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("lc.sidestore.startTimeout", bundle: UserDefaults.lcMainBundle(), comment: "")]))
+                        c.resume(throwing: lcRefreshError("lc.sidestore.startTimeout", "Built-in SideStore failed to start in reasonable time"))
                         self.launchContinuation = nil
                         ext._kill(9)
                     }

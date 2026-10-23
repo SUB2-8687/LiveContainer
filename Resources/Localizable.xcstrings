@@ -7798,6 +7798,91 @@
           }
         }
       }
+    },
+    "lc.sidestore.quitUnexpectedly" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Built-in SideStore quit unexpectedly"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내장 SideStore가 예기치 않게 종료되었습니다."
+          }
+        }
+      }
+    },
+    "lc.sidestore.liveProcessMissing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to locate LiveProcess bundle. To use the Refresh All Apps shortcut, reinstall LiveContainer+SideStore with LiveProcess installed. If you use SideStore, choose \"Keep App Extensions (Use Main Profile)\". If you use Impactor, choose \"Only Register Main Bundle\". For other sideloaders, select keep all extensions, i.e. DO NOT Remove any extension."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveProcess 번들을 찾을 수 없습니다. 모든 앱 새로고침 단축어를 사용하려면 LiveProcess가 포함된 상태로 LiveContainer+SideStore를 다시 설치하세요. SideStore를 사용 중이라면 \"앱 확장 프로그램 유지 (메인 프로필 사용)\"를 선택하세요. Impactor를 사용 중이라면 \"메인 번들만 등록\"을 선택하세요. 그 외 사이드로더는 모든 확장 프로그램을 유지하도록 선택하고, 어떤 확장 프로그램도 제거하지 마세요."
+          }
+        }
+      }
+    },
+    "lc.sidestore.extensionFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to start extension %@. To use the Refresh All Apps shortcut, reinstall LiveContainer+SideStore with LiveProcess installed. If you use SideStore, choose \"Keep App Extensions (Use Main Profile)\". If you use Impactor, choose \"Only Register Main Bundle\". For other sideloaders, select keep all extensions, i.e. DO NOT Remove any extension."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "확장 프로그램을 시작하지 못했습니다: %@. 모든 앱 새로고침 단축어를 사용하려면 LiveProcess가 포함된 상태로 LiveContainer+SideStore를 다시 설치하세요. SideStore를 사용 중이라면 \"앱 확장 프로그램 유지 (메인 프로필 사용)\"를 선택하세요. Impactor를 사용 중이라면 \"메인 번들만 등록\"을 선택하세요. 그 외 사이드로더는 모든 확장 프로그램을 유지하도록 선택하고, 어떤 확장 프로그램도 제거하지 마세요."
+          }
+        }
+      }
+    },
+    "lc.sidestore.typeNotFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SideStore refresh intent type was not found: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SideStore 새로고침 인텐트 타입을 찾을 수 없습니다: %@"
+          }
+        }
+      }
+    },
+    "lc.sidestore.typeNotIntent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SideStore type is not an AppIntent: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SideStore 타입이 앱 인텐트가 아닙니다: %@"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
