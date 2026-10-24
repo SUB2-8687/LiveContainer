@@ -16,6 +16,11 @@ static void UIKitGuestHooksInit() {
     swizzle(UIApplication.class, @selector(_connectUISceneFromFBSScene:transitionContext:), @selector(hook__connectUISceneFromFBSScene:transitionContext:));
     swizzle(UIApplication.class, @selector(openURL:options:completionHandler:), @selector(hook_openURL:options:completionHandler:));
     swizzle(UIApplication.class, @selector(canOpenURL:), @selector(hook_canOpenURL:));
+    // Guest apps run inside LiveContainer, so iOS validates alternate icon names against
+    // LiveContainer's own Info.plist and fails with "The file doesn't exist". Handle them ourselves.
+    swizzle(UIApplication.class, @selector(supportsAlternateIcons), @selector(hook_supportsAlternateIcons));
+    swizzle(UIApplication.class, @selector(alternateIconName), @selector(hook_alternateIconName));
+    swizzle(UIApplication.class, @selector(setAlternateIconName:completionHandler:), @selector(hook_setAlternateIconName:completionHandler:));
     swizzle(UIApplication.class, @selector(setDelegate:), @selector(hook_setDelegate:));
     swizzle(UIScene.class, @selector(scene:didReceiveActions:fromTransitionContext:), @selector(hook_scene:didReceiveActions:fromTransitionContext:));
     swizzle(UIScene.class, @selector(openURL:options:completionHandler:), @selector(hook_openURL:options:completionHandler:));
@@ -519,6 +524,39 @@ static LCControlAppURLHandling LCHandleControlAppURL(NSURL *url, NSString** modi
 }
 
 // Handler for AppDelegate
+// MARK: - Alternate app icon support (guest apps)
+
+static NSDictionary* LCGuestAlternateIcons(void) {
+    NSDictionary* info = NSBundle.mainBundle.infoDictionary;
+    for(NSString* key in @[@"CFBundleIcons", @"CFBundleIcons~ipad"]) {
+        NSDictionary* icons = info[key];
+        if(![icons isKindOfClass:NSDictionary.class]) continue;
+        NSDictionary* alts = icons[@"CFBundleAlternateIcons"];
+        if([alts isKindOfClass:NSDictionary.class] && alts.count > 0) return alts;
+    }
+    return nil;
+}
+
+static UIImage* LCGuestAlternateIconImage(NSString* key, NSDictionary* entry) {
+    NSMutableArray<NSString*>* stems = [NSMutableArray new];
+    NSArray* files = [entry isKindOfClass:NSDictionary.class] ? entry[@"CFBundleIconFiles"] : nil;
+    if([files isKindOfClass:NSArray.class]) {
+        for(id f in files) if([f isKindOfClass:NSString.class]) [stems addObject:f];
+    }
+    [stems addObject:key];
+    NSString* bundlePath = NSBundle.mainBundle.bundlePath;
+    for(NSString* stem in stems) {
+        for(NSString* suffix in @[@"@3x.png", @"@2x.png", @".png", @"@2x~ipad.png", @"~ipad.png"]) {
+            NSString* path = [bundlePath stringByAppendingPathComponent:[stem stringByAppendingString:suffix]];
+            if([NSFileManager.defaultManager fileExistsAtPath:path]) {
+                UIImage* image = [UIImage imageWithContentsOfFile:path];
+                if(image) return image;
+            }
+        }
+    }
+    return nil;
+}
+
 @implementation UIApplication(LiveContainerHook)
 - (void)hook__applicationOpenURLAction:(id)action payload:(NSDictionary *)payload origin:(id)origin {
     NSURL *url = [NSURL URLWithString:payload[UIApplicationLaunchOptionsURLKey]];
@@ -633,6 +671,58 @@ static LCControlAppURLHandling LCHandleControlAppURL(NSURL *url, NSString** modi
 }
 - (BOOL)hook_canOpenURL:(NSURL *) url {
     return canAppOpenItself(url) || shouldRedirectOpenURLToHost(url) || [self hook_canOpenURL:url];
+}
+
+- (BOOL)hook_supportsAlternateIcons {
+    return LCGuestAlternateIcons() != nil || [self hook_supportsAlternateIcons];
+}
+
+- (NSString *)hook_alternateIconName {
+    if(!LCGuestAlternateIcons()) {
+        return [self hook_alternateIconName];
+    }
+    NSString* path = [NSBundle.mainBundle.bundlePath stringByAppendingPathComponent:@"LCAltIconName"];
+    NSString* name = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    return name.length > 0 ? name : nil;
+}
+
+// iOS can only switch to icons declared in the *host* app's Info.plist, which is LiveContainer.
+// Instead, remember the chosen icon inside the guest bundle; LiveContainer uses it for the app
+// list icon and for newly created App Clip / home screen shortcuts.
+- (void)hook_setAlternateIconName:(NSString *)name completionHandler:(void (^)(NSError *))completion {
+    NSDictionary* alternates = LCGuestAlternateIcons();
+    if(!alternates) {
+        [self hook_setAlternateIconName:name completionHandler:completion];
+        return;
+    }
+    NSFileManager* fm = NSFileManager.defaultManager;
+    NSString* dir = NSBundle.mainBundle.bundlePath;
+    NSString* pngPath = [dir stringByAppendingPathComponent:@"LCAltIcon.png"];
+    NSString* namePath = [dir stringByAppendingPathComponent:@"LCAltIconName"];
+    NSError* error = nil;
+
+    if(name.length == 0) {
+        [fm removeItemAtPath:pngPath error:nil];
+        [fm removeItemAtPath:namePath error:nil];
+    } else {
+        UIImage* image = alternates[name] ? LCGuestAlternateIconImage(name, alternates[name]) : nil;
+        NSData* png = image ? UIImagePNGRepresentation(image) : nil;
+        if(!png || ![png writeToFile:pngPath options:NSDataWritingAtomic error:&error] ||
+           ![name writeToFile:namePath atomically:YES encoding:NSUTF8StringEncoding error:&error]) {
+            if(!error) {
+                error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileNoSuchFileError userInfo:nil];
+            }
+        }
+    }
+
+    if(!error) {
+        // drop LiveContainer's cached icons so they are regenerated with the new icon
+        [fm removeItemAtPath:[dir stringByAppendingPathComponent:@"LCAppIconLight.png"] error:nil];
+        [fm removeItemAtPath:[dir stringByAppendingPathComponent:@"LCAppIconDark.png"] error:nil];
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if(completion) completion(error);
+    });
 }
 
 - (void)hook_setDelegate:(id<UIApplicationDelegate>)delegate {

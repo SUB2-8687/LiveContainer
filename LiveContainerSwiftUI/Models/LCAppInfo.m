@@ -201,7 +201,10 @@
     
     // generate and save icon cache to disk
     if(!uiIcon) {
-        uiIcon = [UIImage generateIconForBundleURL:[NSURL fileURLWithPath:_bundlePath] style:isDarkIcon hasBorder:YES];
+        uiIcon = [self selectedAlternateIconWithBorder:YES];
+        if(!uiIcon) {
+            uiIcon = [UIImage generateIconForBundleURL:[NSURL fileURLWithPath:_bundlePath] style:isDarkIcon hasBorder:YES];
+        }
         saveCGImage([uiIcon CGImage], cachedIconUrl);
     }
     
@@ -216,6 +219,29 @@
 
 }
 
+// Alternate icon chosen inside the guest app (see hook_setAlternateIconName in UIKit+GuestHooks.m).
+- (UIImage*)selectedAlternateIconWithBorder:(BOOL)hasBorder {
+    NSString* path = [_bundlePath stringByAppendingPathComponent:@"LCAltIcon.png"];
+    UIImage* image = [UIImage imageWithContentsOfFile:path];
+    if(!image || !hasBorder) {
+        return image;
+    }
+    CGSize size = image.size;
+    UIGraphicsImageRendererFormat* format = [UIGraphicsImageRendererFormat preferredFormat];
+    format.scale = 1;
+    UIGraphicsImageRenderer* renderer = [[UIGraphicsImageRenderer alloc] initWithSize:size format:format];
+    return [renderer imageWithActions:^(UIGraphicsImageRendererContext * _Nonnull context) {
+        CGRect rect = CGRectMake(0, 0, size.width, size.height);
+        CGFloat radius = size.width * 0.2237;
+        UIBezierPath* mask = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:radius];
+        [mask addClip];
+        [image drawInRect:rect];
+        [[UIColor colorWithWhite:1 alpha:0.08] setStroke];
+        mask.lineWidth = 1;
+        [mask stroke];
+    }];
+}
+
 - (void)clearIconCache {
     NSString* lightModeIconPath = [_bundlePath stringByAppendingPathComponent:@"LCAppIconLight.png"];
     NSString* darkModeIconPath = [_bundlePath stringByAppendingPathComponent:@"LCAppIconDark.png"];
@@ -228,7 +254,10 @@
 }
 
 - (UIImage *)generateLiveContainerWrappedIconWithStyle:(GeneratedIconStyle)style {
-    UIImage* icon = [UIImage generateIconForBundleURL:[NSURL fileURLWithPath:_bundlePath] style:style hasBorder:NO];
+    UIImage* icon = [self selectedAlternateIconWithBorder:NO];
+    if(!icon) {
+        icon = [UIImage generateIconForBundleURL:[NSURL fileURLWithPath:_bundlePath] style:style hasBorder:NO];
+    }
     if (![NSUserDefaults.standardUserDefaults boolForKey:@"LCFrameShortcutIcons"]) {
         return icon;
     }
