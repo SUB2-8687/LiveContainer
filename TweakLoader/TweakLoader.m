@@ -3,6 +3,7 @@
 #include <dlfcn.h>
 #include <objc/runtime.h>
 #import "../LiveContainer/utils.h"
+#import "../LiveContainer/Localization.h"
 
 static NSString *loadTweakAtURL(NSURL *url) {
     NSString *tweakPath = url.path;
@@ -15,7 +16,7 @@ static NSString *loadTweakAtURL(NSURL *url) {
         NSDictionary* infoDict = [NSDictionary dictionaryWithContentsOfURL:infoPlistURL];
         NSString* binary = infoDict[@"CFBundleExecutable"];
         if(!binary || ![binary isKindOfClass:NSString.class]) {
-            return [NSString stringWithFormat:@"Unable to load %@: Unable to read Info.Plist", tweak];
+            return [@"lc.tweakLoader.infoPlistReadFailed %@" localizeWithFormat:tweak];
         }
         tweakPath = [[url URLByAppendingPathComponent:binary] path];
     }
@@ -30,7 +31,7 @@ static NSString *loadTweakAtURL(NSURL *url) {
         return @(error);
     } else {
         NSLog(@"Error: dlopen(%@): Unknown error because dlerror() returns NULL", tweak);
-        return [NSString stringWithFormat:@"dlopen(%@): unknown error, handle is NULL", tweakPath];
+        return [@"lc.tweakLoader.dlopenUnknown %@" localizeWithFormat:tweakPath];
     }
 }
 
@@ -58,12 +59,12 @@ static void loadTweaksRecursively(NSURL *folderURL, NSMutableArray *errors) {
 
 static void showDlerrAlert(NSString *error) {
     UIWindow *window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Failed to load tweaks" message:error preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"lc.tweakLoader.loadFailed".loc message:error preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"lc.common.ok".loc style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         window.windowScene = nil;
     }];
     [alert addAction:okAction];
-    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Copy" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"lc.common.copy".loc style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
         UIPasteboard.generalPasteboard.string = error;
         window.windowScene = nil;
     }];

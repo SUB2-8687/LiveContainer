@@ -76,7 +76,7 @@ struct LCAppSettingsView: View {
                             Text("lc.appSettings.tweakFolder".loc)
                                 .foregroundColor(.primary)
                             Spacer()
-                            Text(model.uiTweakFolder == nil ? "None" : model.uiTweakFolder!)
+                            Text(model.uiTweakFolder == nil ? "lc.common.none".loc : model.uiTweakFolder!)
                                 .multilineTextAlignment(.trailing)
                         }
                     }
@@ -171,7 +171,7 @@ struct LCAppSettingsView: View {
                             }
                             .buttonStyle(BorderlessButtonStyle())
                         } else {
-                            Text("No file selected")
+                            Text("lc.common.noFileSelected".loc)
                                 .foregroundColor(.gray)
                         }
                         Button(action: {
@@ -184,7 +184,7 @@ struct LCAppSettingsView: View {
                                     // Store the Base64-encoded string of the file content
                                     model.jitLaunchScriptJs = data.base64EncodedString()
                                 } catch {
-                                    errorInfo = "Failed to read file: \(error.localizedDescription)"
+                                    errorInfo = "lc.appSettings.readFileFailed %@".localizeWithFormat(error.localizedDescription)
                                     errorShow = true
                                 }
                             }
@@ -210,12 +210,14 @@ struct LCAppSettingsView: View {
                     }
                 }
             } footer: {
+
                     if #available(iOS 26.0, *), model.uiIsJITNeeded {
                         Text("lc.appSettings.launchWithJitDesc".loc + "\n" + "lc.appSettings.jit26.scriptDesc".loc)
 
                     } else {
                         Text("lc.appSettings.launchWithJitDesc".loc)
                     }
+                
             }
 
             Section {
@@ -537,7 +539,7 @@ struct LCAppSettingsView: View {
         do {
             let url = try result.get()
             guard url.startAccessingSecurityScopedResource() else {
-                errorInfo = "unable to access directory, startAccessingSecurityScopedResource returns false"
+                errorInfo = "lc.appSettings.directoryAccessFailed".loc
                 errorShow = true
                 return
             }
@@ -556,7 +558,7 @@ struct LCAppSettingsView: View {
             }
             
             guard let bookmark = LCUtils.bookmark(for: url) else {
-                errorInfo = "Unable to generate a bookmark for the selected URL!"
+                errorInfo = "lc.appSettings.bookmarkFailed".loc
                 errorShow = true
                 return
             }

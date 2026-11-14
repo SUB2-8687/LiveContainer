@@ -34,9 +34,9 @@ struct LCDataManagementView : View {
     
     init() {
         _folderPaths = State(initialValue: [
-            LCFolderPath(path: LCPath.docPath, desc: "Private Container"),
-            LCFolderPath(path: LCPath.lcGroupDocPath, desc: "App Group Container"),
-            LCFolderPath(path: Bundle.main.bundleURL, desc: "LiveContainer Bundle"),
+            LCFolderPath(path: LCPath.docPath, desc: "lc.data.privateContainer".loc),
+            LCFolderPath(path: LCPath.lcGroupDocPath, desc: "lc.data.appGroupContainer".loc),
+            LCFolderPath(path: Bundle.main.bundleURL, desc: "lc.data.lcBundle".loc),
         ])
     }
     

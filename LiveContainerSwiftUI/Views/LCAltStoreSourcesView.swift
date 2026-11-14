@@ -342,7 +342,7 @@ enum AltStoreSourceLoader {
             if let shortDate = shortFormatter.date(from: rawValue) {
                 return shortDate
             }
-            throw DecodingError.dataCorruptedError(in: container, debugDescription: "Invalid date format: \(rawValue)")
+            throw DecodingError.dataCorruptedError(in: container, debugDescription: "lc.sources.invalidDateFormat %@".localizeWithFormat(rawValue))
         })
         
         let response = try decoder.decode(AltStoreSourceResponse.self, from: data)
