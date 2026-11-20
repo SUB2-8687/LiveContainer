@@ -225,7 +225,7 @@ struct LCTabView: View {
         
         let task = SecTaskCreateFromSelf(nil)
         guard let value = SecTaskCopyValueForEntitlement(task, "application-identifier" as CFString, nil), let appIdentifier = value.takeRetainedValue() as? String else {
-            errorInfo = "Unable to determine application-identifier"
+            errorInfo = "lc.tab.appIdentifierFailed".loc
             errorShow = true
             return
         }
@@ -265,7 +265,7 @@ struct LCTabView: View {
         }
         
         guard let bookmark = LCUtils.bookmark(for: LCPath.docPath) else {
-            errorInfo = "Failed to create bookmark for Documents folder?"
+            errorInfo = "lc.tab.docsBookmarkFailed".loc
             errorShow = true
             return
         }
