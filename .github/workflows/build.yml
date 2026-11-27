@@ -56,6 +56,8 @@ jobs:
       - name: Prepare Dependencies
         run: |
           sh .github/prepare_dependencies.sh
+      - name: Strip other languages (keep en, ko)
+        run: sh .github/strip_languages.sh
       - name: Archive
         env:
           scheme: ${{ steps.scheme.outputs.scheme }}
