@@ -1,6 +1,40 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "All apps have been refreshed." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All apps have been refreshed."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 앱이 새로고침되었습니다."
+          }
+        }
+      }
+    },
+    "Cannot create Library/Preferences folder!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cannot create Library/Preferences folder!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Library/Preferences 폴더를 만들 수 없습니다."
+          }
+        }
+      }
+    },
     "lc.appBanner.addToHomeScreen" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -151,7 +185,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "일부 앱이 멀티태스킹 중입니다. 이 앱을 실행할 경우 멀티태스킹 중인 앱이 모두 닫힙니다."
+            "value" : "일부 앱이 멀티태스킹 모드로 실행 중입니다. 이 앱을 실행하면 해당 앱이 모두 종료됩니다. 계속하시겠습니까?"
           }
         },
         "pl" : {
@@ -252,7 +286,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@(을)를 제거하시겠습니까?"
+            "value" : "%@을(를) 제거하시겠습니까?"
           }
         },
         "pl" : {
@@ -555,7 +589,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Clip 생성"
+            "value" : "앱 클립 생성"
           }
         },
         "pl" : {
@@ -1060,7 +1094,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "데이터 폴더 없음"
+            "value" : "데이터 폴더가 아직 생성되지 않았습니다"
           }
         },
         "pl" : {
@@ -1565,7 +1599,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "현재 LiveContainer에 JIT을 활성화해주세요."
+            "value" : "원하는 방법으로 현재 LiveContainer의 JIT을 활성화해주세요."
           }
         },
         "pl" : {
@@ -1715,6 +1749,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在等待JIT"
+          }
+        }
+      }
+    },
+    "lc.appInfo.corrupted" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Corrupted, Please Reinstall This App"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱이 손상되었습니다. 이 앱을 다시 설치해주세요."
+          }
+        }
+      }
+    },
+    "lc.appInfo.encrypted" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app you tried to install is encrypted. Please provide decrypted app."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설치하려는 앱이 암호화되어 있습니다. 복호화된 앱을 사용해주세요."
+          }
+        }
+      }
+    },
+    "lc.appInfo.extensionNeedsDecrypted %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ requires a decrypted arm64 executable"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@에는 복호화된 arm64 실행 파일이 필요합니다."
           }
         }
       }
@@ -2844,7 +2929,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "오리지널"
+            "value" : "원본"
           }
         },
         "pl" : {
@@ -4127,7 +4212,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LiveContainer에서 앱을 관리하세요."
+            "value" : "기본 LiveContainer에서 앱을 관리하세요."
           }
         },
         "pl" : {
@@ -4590,7 +4675,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "plist를 파싱하는데 실패했습니다."
+            "value" : "plist 파일을 분석하지 못했습니다."
           }
         },
         "pl" : {
@@ -4679,7 +4764,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LiveContainer로 설치된 앱은 \"%@\" Scheme을 사용할 수 없습니다."
+            "value" : "LiveContainer에 설치된 앱 중 \"%@\" Scheme을 열 수 있는 앱이 없습니다."
           }
         },
         "pl" : {
@@ -4728,6 +4813,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "安裝在LiveContainer中的任何應用程式都無法開啟方案「%@」。"
+          }
+        }
+      }
+    },
+    "lc.appList.sharedIPABookmarkFailed %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to resolve shared IPA bookmark: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공유 IPA 북마크를 확인하지 못했습니다: %@"
           }
         }
       }
@@ -5167,7 +5269,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "가나다순으로 재정렬됩니다."
+            "value" : "사용자 지정 순서가 초기화되고 가나다순으로 정렬됩니다."
           }
         },
         "pl" : {
@@ -5500,6 +5602,23 @@
         }
       }
     },
+    "lc.appList.sortBy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sort by"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정렬 기준"
+          }
+        }
+      }
+    },
     "lc.appList.urlFileIsNotIpaError" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5649,7 +5768,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "URL이 유효하지 않습니다."
+            "value" : "입력한 URL이 올바르지 않습니다. 확인 후 다시 시도해주세요."
           }
         },
         "pl" : {
@@ -5702,6 +5821,57 @@
         }
       }
     },
+    "lc.appModel.buildURLFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to build URL from launchURLComp???"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "launchURLComp에서 URL을 만들 수 없습니다."
+          }
+        }
+      }
+    },
+    "lc.appModel.pidFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to obtain PID from LiveProcess"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveProcess에서 PID를 가져오지 못했습니다."
+          }
+        }
+      }
+    },
+    "lc.appPref.loadFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to load preference."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "환경설정을 불러오지 못했습니다."
+          }
+        }
+      }
+    },
     "lc.apppSettings.orientationLock" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5750,7 +5920,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "화면 잠금"
+            "value" : "화면 방향 고정"
           }
         },
         "pl" : {
@@ -6047,7 +6217,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "외부 저장소 컨테이너 추가 중입니다."
+            "value" : "외부 스토리지 컨테이너 추가"
           }
         },
         "pl" : {
@@ -6130,7 +6300,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "외부 저장소에 컨테이너를 추가할 경우, 앱이 충돌할 수 있습니다. 계속하시겠습니까?"
+            "value" : "로컬이 아닌 스토리지에 컨테이너를 추가하는 기능은 대부분의 앱에서 지원되지 않으며, 충돌을 비롯한 예기치 않은 동작이 발생할 수 있습니다. 계속하시겠습니까?"
           }
         },
         "pl" : {
@@ -6219,7 +6389,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "현재 앱 데이터는 %@에 있습니다. %@(을)를 열고 앱 목록에 실행해보세요."
+            "value" : "이 앱의 데이터는 현재 %@에 있습니다. %@을(를) 열고 '앱 목록' 화면에서 앱을 실행한 뒤 다시 시도해주세요."
           }
         },
         "pl" : {
@@ -6268,6 +6438,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此應用程式的資料目前在%@。 開啟%@，將其啟動到「我的應用程式」螢幕，然後重試。"
+          }
+        }
+      }
+    },
+    "lc.appSettings.bookmarkFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to generate a bookmark for the selected URL!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선택한 URL의 북마크를 생성할 수 없습니다."
           }
         }
       }
@@ -6393,6 +6580,12 @@
             "state" : "needs_review",
             "value" : "相容模式"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(실험적) 호환 모드"
+          }
         }
       }
     },
@@ -6403,6 +6596,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "(Experimental) Guides the system to display the app at the appropriate resolution. On iPad OS, the app will be displayed in iPhone mode if it does not natively support iPad."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(실험적) 시스템이 앱을 적절한 해상도로 표시하도록 유도합니다. iPadOS에서 iPad를 기본 지원하지 않는 앱은 iPhone 모드로 표시됩니다."
+          }
+        }
+      }
+    },
+    "lc.appSettings.directoryAccessFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to access the directory. startAccessingSecurityScopedResource returned false."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "폴더에 접근할 수 없습니다. startAccessingSecurityScopedResource가 false를 반환했습니다."
           }
         }
       }
@@ -6628,6 +6844,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "修復后台處理任務"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "백그라운드 처리 작업 문제 해결"
           }
         }
       }
@@ -7449,6 +7671,12 @@
             "state" : "needs_review",
             "value" : "啟用 App 輔助處理程序"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "헬퍼 프로세스 지원"
+          }
         }
       }
     },
@@ -7601,7 +7829,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "앱을 완전히 숨길려면, 설정에서 고급 숨김 모드를 활성화해주세요."
+            "value" : "앱을 완전히 숨기려면 설정에서 고급 숨김 모드를 활성화해주세요."
           }
         },
         "pl" : {
@@ -8000,7 +8228,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "JIT을 활성화한 상태에서 앱을 실행하여 자바스크립트 파일이 StikDebug에게 전송되었습니다."
+            "value" : "JIT으로 앱을 실행할 때 StikDebug에 전달되는 JavaScript 파일입니다."
           }
         },
         "pl" : {
@@ -8095,7 +8323,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "스크립트가 실행되었습니다."
+            "value" : "스크립트를 불러왔습니다."
           }
         },
         "pl" : {
@@ -8546,6 +8774,23 @@
         }
       }
     },
+    "lc.appSettings.readFileFailed %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to read file: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "파일을 읽지 못했습니다: %@"
+          }
+        }
+      }
+    },
     "lc.appSettings.remark" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -8720,6 +8965,12 @@
             "state" : "translated",
             "value" : "32-bit emulator"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "32비트 에뮬레이터"
+          }
         }
       }
     },
@@ -8765,7 +9016,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "외부 저장소 폴더 선택"
+            "value" : "외부 스토리지 폴더 선택"
           }
         },
         "pl" : {
@@ -8850,6 +9101,12 @@
             "state" : "translated",
             "value" : "签名工具"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "서명 도구"
+          }
         }
       }
     },
@@ -8901,7 +9158,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "앱이 서명되지 않은 상태입니다. 서명하시겠습니까?"
+            "value" : "이 앱은 서명되지 않았습니다. 그래도 서명하시겠습니까?"
           }
         },
         "pl" : {
@@ -9703,7 +9960,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "메인 번들을 LiveContainer 번들 식별자로 덮어씌워서 문제를 해결합니다."
+            "value" : "메인 번들을 덮어쓸 때 LiveContainer의 번들 식별자를 사용하여 이러한 문제를 해결합니다."
           }
         },
         "pl" : {
@@ -11366,6 +11623,23 @@
         }
       }
     },
+    "lc.common.help" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "도움말"
+          }
+        }
+      }
+    },
     "lc.common.install" : {
       "comment" : "lc.common.install",
       "extractionState" : "stale",
@@ -12897,6 +13171,12 @@
             "state" : "translated",
             "value" : "推荐"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "추천"
+          }
         }
       }
     },
@@ -12997,6 +13277,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "未知"
+          }
+        }
+      }
+    },
+    "lc.common.unknownStore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown Store"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "알 수 없는 스토어"
           }
         }
       }
@@ -13150,7 +13447,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "기본 LiveContainer입니다."
+            "value" : "이미 기본 컨테이너입니다."
           }
         },
         "pl" : {
@@ -13245,7 +13542,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "컨테이너 북마크 해결 중입니다."
+            "value" : "컨테이너 북마크를 확인하는 중입니다..."
           }
         },
         "pl" : {
@@ -14139,6 +14436,12 @@
             "state" : "translated",
             "value" : "无效的 IDFV"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "올바르지 않은 IDFV입니다."
+          }
         }
       }
     },
@@ -14897,7 +15200,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "미사용 중인 폴더 없습니다."
+            "value" : "사용하지 않는 데이터 폴더가 없습니다."
           }
         },
         "pl" : {
@@ -15449,6 +15752,261 @@
         }
       }
     },
+    "lc.data.appGroupContainer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Group Container"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 그룹 컨테이너"
+          }
+        }
+      }
+    },
+    "lc.data.lcBundle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveContainer Bundle"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveContainer 번들"
+          }
+        }
+      }
+    },
+    "lc.data.privateContainer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Private Container"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "비공개 컨테이너"
+          }
+        }
+      }
+    },
+    "lc.devSettings.disableWatchdog" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable LiveProcess watchdog termination"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveProcess 워치독 종료 비활성화"
+          }
+        }
+      }
+    },
+    "lc.devSettings.exportCert" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Cert"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "인증서 내보내기"
+          }
+        }
+      }
+    },
+    "lc.devSettings.exportDyld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Dyld"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dyld 내보내기"
+          }
+        }
+      }
+    },
+    "lc.devSettings.exportMainBundle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Main Bundle"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메인 번들 내보내기"
+          }
+        }
+      }
+    },
+    "lc.devSettings.ignoreJITOnLaunch" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignore JIT on Launching App"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 실행 시 JIT 무시"
+          }
+        }
+      }
+    },
+    "lc.devSettings.keepSelectedWhenQuit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep Selected App when Quit"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "종료 시 선택한 앱 유지"
+          }
+        }
+      }
+    },
+    "lc.devSettings.nukeSideStore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuke SideStore"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SideStore 데이터 초기화"
+          }
+        }
+      }
+    },
+    "lc.devSettings.resetSymbolOffsets" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Symbol Offsets"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "심볼 오프셋 재설정"
+          }
+        }
+      }
+    },
+    "lc.devSettings.sharePrivateData" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow Private Data access from LiveProcess"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveProcess에서 비공개 데이터 접근 허용"
+          }
+        }
+      }
+    },
+    "lc.devSettings.showFlexOverlay" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show FLEX Overlay"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FLEX 오버레이 표시"
+          }
+        }
+      }
+    },
+    "lc.devSettings.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developer Settings"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개발자 설정"
+          }
+        }
+      }
+    },
+    "lc.devSettings.waitForDebugger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wait For Debugger"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "디버거 대기"
+          }
+        }
+      }
+    },
     "lc.download.downloading" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -15550,6 +16108,40 @@
         }
       }
     },
+    "lc.download.httpError %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HTTP Error: %lld"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HTTP 오류: %lld"
+          }
+        }
+      }
+    },
+    "lc.download.invalidResponse" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid response"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "올바르지 않은 응답입니다."
+          }
+        }
+      }
+    },
     "lc.guestTweak.appSwitchTip %@" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -15598,7 +16190,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@(을)를 실행할 경우 현재 앱은 종료됩니다."
+            "value" : "%@(으)로 전환하시겠습니까? 현재 앱이 종료됩니다."
           }
         },
         "pl" : {
@@ -15901,7 +16493,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@로 열기"
+            "value" : "%@(으)로 열기"
           }
         },
         "pl" : {
@@ -16002,7 +16594,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "웹페이지를 열고, 앱을 실행할 경우 현재 앱이 종료됩니다. 유니버셜 링크를 지원할 경우 현재 앱 안에서 여는 것을 시도할 수 있습니다."
+            "value" : "웹페이지를 열고 앱을 실행하시겠습니까? 현재 앱이 종료됩니다. 유니버설 링크를 지원하는 앱이라면 현재 앱에서 열어볼 수도 있습니다."
           }
         },
         "pl" : {
@@ -16204,7 +16796,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "JIT 없이 LiveContainer를 사용하려면 JIT-Less 모드를 활성화하세요.\n\n**JIT-Less 모드 활성화 도중 문제가 있을 경우 JIT-Less 모드 진단을 활용해보세요.**\n\n앱을 설치하려면 +를 누르세요.\n\n앱을 홈 화면에 추가하거나, 앱 설정을 열고 싶으면 앱을 길게 누르세요."
+            "value" : "JIT 없이 LiveContainer를 사용하려면 JIT-Less 모드를 활성화하세요.\n\n**JIT-Less 모드 활성화 도중 문제가 있을 경우 설정의 JIT-Less 모드 진단 페이지를 확인해보세요.**\n\n앱을 설치하려면 +를 누르세요.\n\n앱을 홈 화면에 추가하거나, 앱 설정을 열고 싶으면 앱을 길게 누르세요."
           }
         },
         "pl" : {
@@ -16556,6 +17148,74 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Entitlement 文件"
+          }
+        }
+      }
+    },
+    "lc.jitDebug.appNotFound %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ is not found. Please install it first and switch it to shared app."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@을(를) 찾을 수 없습니다. 먼저 설치한 후 공유 앱으로 전환해주세요."
+          }
+        }
+      }
+    },
+    "lc.jitEnabler.jitStreamerEBLegacy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JitStreamer-EB (Relaunch)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JitStreamer-EB (앱 재실행)"
+          }
+        }
+      }
+    },
+    "lc.jitEnabler.stikJITLC" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StikDebug (Another LiveContainer/Multitask)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StikDebug (다른 LiveContainer/멀티태스킹)"
+          }
+        }
+      }
+    },
+    "lc.jitEnabler.stosDebugLC" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StosDebug (Another LiveContainer/Multitask)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StosDebug (다른 LiveContainer/멀티태스킹)"
           }
         }
       }
@@ -17113,7 +17773,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "만료됨"
+            "value" : "폐기됨"
           }
         },
         "pl" : {
@@ -17714,7 +18374,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "예상 Team ID"
+            "value" : "인증서 팀 ID"
           }
         },
         "pl" : {
@@ -17846,6 +18506,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "檢查中"
+          }
+        }
+      }
+    },
+    "lc.jitlessDiag.entitlementLoadFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to load entitlement."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "권한을 불러오지 못했습니다."
           }
         }
       }
@@ -18024,6 +18701,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "尋求幫助"
+          }
+        }
+      }
+    },
+    "lc.jitlessDiag.lcEntitlements" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveContainer Entitlements"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveContainer 권한"
+          }
+        }
+      }
+    },
+    "lc.jitlessDiag.liveProcessNotInstalled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveProcess is not installed."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveProcess가 설치되어 있지 않습니다."
+          }
+        }
+      }
+    },
+    "lc.jitlessDiag.lpEntitlements" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveProcess Entitlements"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveProcess 권한"
           }
         }
       }
@@ -18230,6 +18958,23 @@
         }
       }
     },
+    "lc.jitlessDiag.teamIdReadFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to read com.apple.developer.team-identifier"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "com.apple.developer.team-identifier를 읽지 못했습니다."
+          }
+        }
+      }
+    },
     "lc.jitlessSetup.error.testLibLoadFailed %@ %@ %@" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -18291,6 +19036,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "無法載入測試動態連結庫，這可能是由於證書出現問題。請嘗試：1. 重新打開%@；2. 刷新%@；3. 如果仍有問題，請嘗試重新修補%@。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "테스트 라이브러리를 불러오지 못했습니다. 인증서에 문제가 있을 수 있습니다. 다음을 시도해보세요: 1. %@ 다시 열기, 2. %@에서 모든 앱 새로고침, 3. %@ 다시 패치 후 재시도"
           }
         }
       }
@@ -18392,6 +19143,856 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "免JIT模式測試通過"
+          }
+        }
+      }
+    },
+    "lc.jitMsg.checkingMount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checking mount status..."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "마운트 상태를 확인하는 중..."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.checkMountStatus %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check %@/mount_status for mounting status."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "마운트 상태는 %@/mount_status에서 확인하세요."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.contactingEB %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacting JitStreamer-EB server at %@..."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@의 JitStreamer-EB 서버에 연결하는 중..."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.contactingSideJIT %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacting SideJITServer at %@..."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@의 SideJITServer에 연결하는 중..."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.continueInAnotherLC" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JIT acquisition will continue in another LiveContainer."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JIT 활성화가 다른 LiveContainer에서 계속됩니다."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.continueInBrowser" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JIT acquisition will continue in the default browser."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JIT 활성화가 기본 브라우저에서 계속됩니다."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.continueInSideStore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JIT acquisition will continue in SideStore."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JIT 활성화가 SideStore에서 계속됩니다."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.continueInStik" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JIT acquisition will continue in StikDebug."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JIT 활성화가 StikDebug에서 계속됩니다."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.continueInStos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JIT acquisition will continue in StosDebug."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JIT 활성화가 StosDebug에서 계속됩니다."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.ebFailed %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to contact JitStreamer-EB server: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JitStreamer-EB 서버에 연결하지 못했습니다: %@"
+          }
+        }
+      }
+    },
+    "lc.jitMsg.mountFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mounting failed with unknown error."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "알 수 없는 오류로 마운트에 실패했습니다."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.mountingDDI" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your device is currently mounting the developer disk image. Leave your device on and connected. Once this finishes, you can run JitStreamer again."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기기에서 개발자 디스크 이미지를 마운트하는 중입니다. 기기를 켜 두고 연결된 상태로 유지해주세요. 완료되면 JitStreamer를 다시 실행할 수 있습니다."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.noAppName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to get App Name, Please try again."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 이름을 가져올 수 없습니다. 다시 시도해주세요."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.noFreeLC" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No free LiveContainer is available. Please either: \n(1)close one, \n(2)install a new one, \n(3)choose another method to enable JIT."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용 가능한 LiveContainer가 없습니다. 다음 중 하나를 진행해주세요: \n(1) 실행 중인 LiveContainer 종료, \n(2) 새 LiveContainer 설치, \n(3) 다른 JIT 활성화 방법 선택"
+          }
+        }
+      }
+    },
+    "lc.jitMsg.sideJITFailed %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to contact SideJITServer: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SideJITServer에 연결하지 못했습니다: %@"
+          }
+        }
+      }
+    },
+    "lc.jitMsg.stikNotInstalled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StikDebug is not installed in LiveContainer."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveContainer에 StikDebug가 설치되어 있지 않습니다."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.stikNotShared" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StikDebug is installed in LiveContainer, but is not a shared app. Convert it to a shared app to continue."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveContainer에 StikDebug가 설치되어 있지만 공유 앱이 아닙니다. 계속하려면 공유 앱으로 전환해주세요."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.stosNotInstalled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StosDebug is not installed in LiveContainer."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveContainer에 StosDebug가 설치되어 있지 않습니다."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.stosNotShared" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StosDebug is installed in LiveContainer, but is not a shared app. Convert it to a shared app to continue."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveContainer에 StosDebug가 설치되어 있지만 공유 앱이 아닙니다. 계속하려면 공유 앱으로 전환해주세요."
+          }
+        }
+      }
+    },
+    "lc.jitMsg.vpn" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please make sure the VPN is connected if the server is not in your local network."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "서버가 로컬 네트워크에 없는 경우 VPN이 연결되어 있는지 확인해주세요."
+          }
+        }
+      }
+    },
+    "lc.launch.appBundleNotFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App bundle not found! Unable to read LCAppInfo.plist."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 번들을 찾을 수 없습니다! LCAppInfo.plist를 읽을 수 없습니다."
+          }
+        }
+      }
+    },
+    "lc.launch.appNotFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App not found"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱을 찾을 수 없습니다."
+          }
+        }
+      }
+    },
+    "lc.launch.bookmarkFailed %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmark resolution failed or unable to access the container. You might need to readd the data storage. %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "북마크 확인에 실패했거나 컨테이너에 접근할 수 없습니다. 데이터 스토리지를 다시 추가해야 할 수 있습니다. %@"
+          }
+        }
+      }
+    },
+    "lc.launch.bookmarkTimeout" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmark resolution timed out. Is the data storage offline?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "북마크 확인 시간이 초과되었습니다. 데이터 스토리지가 오프라인 상태인가요?"
+          }
+        }
+      }
+    },
+    "lc.launch.containerNotFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Container not found!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "컨테이너를 찾을 수 없습니다!"
+          }
+        }
+      }
+    },
+    "lc.launch.dlopenUnknown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dlopen: an unknown error occurred"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dlopen: 알 수 없는 오류가 발생했습니다."
+          }
+        }
+      }
+    },
+    "lc.launch.emulator32NotFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The specified 32-bit emulator app is not found"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지정한 32비트 에뮬레이터 앱을 찾을 수 없습니다."
+          }
+        }
+      }
+    },
+    "lc.launch.executableNotFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App's executable path not found. Please try force re-signing or reinstalling this app."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱의 실행 파일 경로를 찾을 수 없습니다. 강제 재서명하거나 앱을 다시 설치해보세요."
+          }
+        }
+      }
+    },
+    "lc.launch.guestExtensionAccessFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to access the guest extension or its container"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "게스트 확장 프로그램 또는 컨테이너에 접근할 수 없습니다."
+          }
+        }
+      }
+    },
+    "lc.launch.guestExtensionLoadFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to load the guest extension"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "게스트 확장 프로그램을 불러올 수 없습니다."
+          }
+        }
+      }
+    },
+    "lc.launch.jitlessRequired" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JITLess mode is required since iOS 26. Please set it up in settings. \nPlease go to LiveContainer settings -> tap \"Import Certificate from SideStore\" / \"Import Certificate\""
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS 26부터는 JIT-Less 모드가 필요합니다. 설정에서 JIT-Less 모드를 설정해주세요.\nLiveContainer 설정 → \"SideStore에서 인증서 가져오기\" 또는 \"인증서 가져오기\"를 눌러주세요."
+          }
+        }
+      }
+    },
+    "lc.launch.jitNotEnabled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JIT was not enabled. If you want to use LiveContainer without JIT, setup JITLess mode in settings."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JIT이 활성화되지 않았습니다. JIT 없이 LiveContainer를 사용하려면 설정에서 JIT-Less 모드를 설정해주세요."
+          }
+        }
+      }
+    },
+    "lc.launch.jitRequired32" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JIT is required to run 32-bit apps."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "32비트 앱을 실행하려면 JIT이 필요합니다."
+          }
+        }
+      }
+    },
+    "lc.launch.no32Emulator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No 32-bit emulator selected"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선택된 32비트 에뮬레이터가 없습니다."
+          }
+        }
+      }
+    },
+    "lc.launch.noMainEntry" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not find the main entry point"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메인 진입점을 찾을 수 없습니다."
+          }
+        }
+      }
+    },
+    "lc.launch.returnedMain %d" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App returned from its main function with code %d."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱의 메인 함수가 코드 %d(으)로 종료되었습니다."
+          }
+        }
+      }
+    },
+    "lc.move.destinationExists %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Destination already exists: %@. Delete or rename this file/folder to continue."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "대상이 이미 존재합니다: %@. 계속하려면 이 파일/폴더를 삭제하거나 이름을 변경하세요."
+          }
+        }
+      }
+    },
+    "lc.move.destParentMissing %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Destination parent directory does not exist: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "대상의 상위 폴더가 존재하지 않습니다: %@"
+          }
+        }
+      }
+    },
+    "lc.move.destParentNotDir %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Destination parent is not a directory: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "대상의 상위 경로가 폴더가 아닙니다: %@"
+          }
+        }
+      }
+    },
+    "lc.move.destParentNotWritable %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Destination parent is not writable: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "대상의 상위 폴더에 쓸 수 없습니다: %@"
+          }
+        }
+      }
+    },
+    "lc.move.duplicateDest %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duplicate destination URL in move list: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이동 목록에 대상 URL이 중복되었습니다: %@"
+          }
+        }
+      }
+    },
+    "lc.move.duplicateSource %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duplicate source URL in move list: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이동 목록에 원본 URL이 중복되었습니다: %@"
+          }
+        }
+      }
+    },
+    "lc.move.emptySource %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source URL is invalid: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원본 URL이 올바르지 않습니다: %@"
+          }
+        }
+      }
+    },
+    "lc.move.failed %@ %@ %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to move %@ to %@. %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@을(를) %@(으)로 이동하지 못했습니다. %@"
+          }
+        }
+      }
+    },
+    "lc.move.insideItself %@ %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cannot move directory %@ inside itself at %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "폴더 %@을(를) 자기 자신의 내부(%@)로 이동할 수 없습니다."
+          }
+        }
+      }
+    },
+    "lc.move.sameSourceDest %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source and destination are the same: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원본과 대상이 같습니다: %@"
+          }
+        }
+      }
+    },
+    "lc.move.sourceDoesNotExist %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source does not exist: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원본이 존재하지 않습니다: %@"
+          }
+        }
+      }
+    },
+    "lc.move.sourceNotReachable %@ %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source is not reachable: %@. %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원본에 접근할 수 없습니다: %@. %@"
+          }
+        }
+      }
+    },
+    "lc.move.sourceParentNotWritable %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source parent is not writable: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원본의 상위 폴더에 쓸 수 없습니다: %@"
+          }
+        }
+      }
+    },
+    "lc.multitask.childCrashed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to start app. Child process has unexpectedly crashed"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱을 시작하지 못했습니다. 하위 프로세스가 예기치 않게 종료되었습니다."
           }
         }
       }
@@ -19747,7 +21348,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LiveContainer 번들 ID \"%@\"(이)가 권한 내 앱 식별자인 번들 ID \"%@\"(과)와 동일하지 않습니다. 일부 기능이 작동하지 않을 수 있습니다."
+            "value" : "LiveContainer의 번들 ID \"%@\"이(가) 권한(entitlements)의 application-Identifier와 일치하지 않습니다. 번들 ID는 \"%@\"(이)어야 합니다. 일부 기능을 사용하지 못할 수 있습니다."
           }
         },
         "pl" : {
@@ -19796,6 +21397,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LiveContainer 的套裝識別碼「%@」與權限中的 application-Identifier 不匹配，權限預期的套裝識別碼為「%@」。某些功能可能無法使用。"
+          }
+        }
+      }
+    },
+    "lc.settings.certDecodeFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to decode certificate data"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "인증서 데이터를 해석하지 못했습니다."
+          }
+        }
+      }
+    },
+    "lc.settings.certImportURLFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to initialize certificate import URL."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "인증서 가져오기 URL을 초기화하지 못했습니다."
           }
         }
       }
@@ -19862,6 +21497,12 @@
             "state" : "translated",
             "value" : "缓存清理完成"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "캐시를 삭제했습니다."
+          }
         }
       }
     },
@@ -19927,6 +21568,12 @@
             "state" : "translated",
             "value" : "确认清除缓存？"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "캐시를 삭제하시겠습니까?"
+          }
         }
       }
     },
@@ -19991,6 +21638,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "清理缓存"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "캐시 정리"
           }
         }
       }
@@ -20556,7 +22209,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "현재 LiveContainer에 비공개 키체인에 남아있는 경우, 일부 앱 계정이 LiveContainer 간에 동기화되지 않을 수 있습니다. 이 문제는 키체인을 삭제하면 해결될 수 있습니다. (단, 일부 계정이 로그아웃될 수 있습니다.)"
+            "value" : "일부 앱의 계정이 LiveContainer 간에 동기화되지 않는다면, 해당 계정이 현재 LiveContainer의 비공개 키체인에 남아 있기 때문일 수 있습니다. 키체인을 삭제하면 해결될 수 있지만, 일부 계정에서 로그아웃될 수 있습니다. 계속하시겠습니까?"
           }
         },
         "pl" : {
@@ -20672,6 +22325,12 @@
             "state" : "translated",
             "value" : "清理 tmp 内容"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "임시 파일 정리"
+          }
         }
       }
     },
@@ -20738,6 +22397,12 @@
             "state" : "translated",
             "value" : "已清理 tmp 内容。"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "임시 파일을 삭제했습니다."
+          }
         }
       }
     },
@@ -20803,6 +22468,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "要删除 tmp 内容吗？"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "임시 파일을 삭제하시겠습니까?"
           }
         }
       }
@@ -20952,6 +22623,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "清除通知"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "알림 지우기"
           }
         }
       }
@@ -21196,6 +22873,12 @@
             "state" : "translated",
             "value" : "預設簽署工具"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기본 서명 도구"
+          }
         }
       }
     },
@@ -21247,7 +22930,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "독 너비"
+            "value" : "Dock 너비"
           }
         },
         "pl" : {
@@ -21443,7 +23126,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이 옵션을 활성화할 경우 새로 설치되는 앱은 서명되지 않은 상태로 설치됩니다."
+            "value" : "이 옵션을 켜 두면 LiveContainer가 새 앱을 서명하지 않으며, 설치되는 앱은 서명되지 않은 상태로 유지됩니다."
           }
         },
         "pl" : {
@@ -21746,7 +23429,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "JIT-Less 모드를 테스트하려면 ADP 인증서가 필요합니다."
+            "value" : "JIT-Less 모드를 테스트하기 전에 ADP 인증서를 가져와야 합니다."
           }
         },
         "pl" : {
@@ -21948,7 +23631,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "설치한 앱 아이콘에 LiveContainer 아이콘을 합성합니다. 합성된 아이콘은 App Clip으로 앱을 홈 화면에 추가할 경우 보여집니다."
+            "value" : "설치한 앱 아이콘에 LiveContainer 아이콘을 합성합니다. 합성된 아이콘은 앱 클립으로 앱을 홈 화면에 추가할 경우 보여집니다."
           }
         },
         "pl" : {
@@ -22057,6 +23740,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "隐藏折叠 Dock"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "접힌 Dock 숨기기"
           }
         }
       }
@@ -22495,7 +24184,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AltStore, SideStore 없이 JIT-Less 모드를 사용하려면, LiveContainer를 설치할 때 사용한 동일한 인증서가 필요합니다."
+            "value" : "AltStore나 SideStore 없이 JIT-Less 모드를 사용하려면 LiveContainer를 서명할 때 사용한 인증서를 가져와야 합니다. 계속하시겠습니까?"
           }
         },
         "pl" : {
@@ -22806,6 +24495,12 @@
             "state" : "translated",
             "value" : "向LiveContainer加載模組"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveContainer 자체에 트윅 불러오기"
+          }
         }
       }
     },
@@ -22870,6 +24565,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LiveContainer 會載入放入全域模組資料夾的模組。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전역 “Tweaks” 폴더에 트윅을 넣으면 LiveContainer가 자동으로 불러옵니다."
           }
         }
       }
@@ -23023,7 +24724,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "인증서을 확인할 수 없습니다. LiveContainer를 서명하는데 사용한 인증서와 동일한지, 인증서 비밀번호가 올바른지 확인해주세요."
+            "value" : "인증서를 확인할 수 없습니다. 비밀번호가 올바른지, 선택한 인증서가 LiveContainer를 서명할 때 사용한 인증서와 같은지 확인해주세요."
           }
         },
         "pl" : {
@@ -23528,7 +25229,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LiveContainer를 사용하려면 JIT가 필요합니다. JIT 없이 사용하려면 JIT-Less을 활성화하세요."
+            "value" : "JIT-Less를 사용하면 JIT을 활성화하지 않고도 LiveContainer를 사용할 수 있습니다."
           }
         },
         "pl" : {
@@ -23783,6 +25484,23 @@
         }
       }
     },
+    "lc.settings.keychainReadError %d" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keychain read error: %d"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "키체인 읽기 오류: %d"
+          }
+        }
+      }
+    },
     "lc.settings.launchMultitaskMaximized" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -23831,7 +25549,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "기본값으로 창이 최대화된 상태로 실행되었습니다."
+            "value" : "항상 최대화된 창로 실행"
           }
         },
         "pl" : {
@@ -24256,7 +25974,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%#@arg1@(과)와 %#@arg2@ 이동이 완료되었습니다."
+            "value" : "%#@arg1@와 %#@arg2@를 이동했습니다."
           },
           "substitutions" : {
             "arg1" : {
@@ -24267,7 +25985,7 @@
                   "other" : {
                     "stringUnit" : {
                       "state" : "translated",
-                      "value" : "%arg 데이터 폴더"
+                      "value" : "데이터 폴더 %arg개"
                     }
                   }
                 }
@@ -24281,7 +25999,7 @@
                   "other" : {
                     "stringUnit" : {
                       "state" : "translated",
-                      "value" : "%arg 트윅 폴더"
+                      "value" : "트윅 폴더 %arg개"
                     }
                   }
                 }
@@ -24735,7 +26453,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "'앱 그룹' 밖으로 '지저분한 폴더' 이동"
+            "value" : "앱 그룹에 남은 폴더를 밖으로 이동"
           }
         },
         "pl" : {
@@ -24937,7 +26655,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "인증서가 일치하지 않습니다. LiveContainer 설치할 때 사용한 동일한 계정으로 LiveContainer2를 설치해주세요."
+            "value" : "LiveContainer2가 LiveContainer와 다른 인증서로 서명되어 작동하지 않습니다. LiveContainer를 설치할 때 사용한 계정과 같은 계정으로 LiveContainer2를 설치해주세요."
           }
         },
         "pl" : {
@@ -25038,7 +26756,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LiveContainer를 여러 개 설치할 경우, 앱 여러 개를 동시에 실행할 수 있습니다. (설치한 앱은 공유된 앱으로 변환해야 합니다.)"
+            "value" : "LiveContainer를 여러 개 설치하고 앱을 공유 앱으로 전환하면, 모든 LiveContainer에서 하나의 앱을 데이터와 설정 대부분을 유지한 채 열 수 있습니다."
           }
         },
         "pl" : {
@@ -25525,7 +27243,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LiveContainer2 다운로드가 완료되면, %@(으)로 설치해주세요."
+            "value" : "다른 LiveContainer용 IPA를 생성합니다. %@에 공유하여 설치해주세요. 계속하시겠습니까?"
           }
         },
         "pl" : {
@@ -25742,6 +27460,12 @@
             "state" : "translated",
             "value" : "启动优先级"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "실행 우선순위"
+          }
         }
       }
     },
@@ -25807,6 +27531,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "拖动 LiveContainer 来设置启动共享 App 时的尝试顺序。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveContainer를 드래그하여 공유 앱을 실행할 때 먼저 시도할 순서를 정하세요."
           }
         }
       }
@@ -26367,6 +28097,12 @@
             "state" : "translated",
             "value" : "没有可清理的缓存。"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "삭제할 캐시가 없습니다."
+          }
         }
       }
     },
@@ -26519,7 +28255,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LiveContainer를 사용할 수 없습니다. 개발용 인증서로 설치해주세요."
+            "value" : "LiveContainer가 개발용 인증서로 서명되지 않아 전혀 작동하지 않습니다. 개발용 인증서로 LiveContainer를 서명해주세요."
           }
         },
         "pl" : {
@@ -26627,6 +28363,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "没有可清理的 tmp 内容。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "삭제할 임시 파일이 없습니다."
           }
         }
       }
@@ -26756,7 +28498,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LiveContainer 전용 URL Scheme"
+            "value" : "URL Scheme을 호스트 LiveContainer로 전달"
           }
         },
         "pl" : {
@@ -26845,7 +28587,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@에서 인증서 재설치"
+            "value" : "%@에서 인증서 새로고침"
           }
         },
         "pl" : {
@@ -27047,7 +28789,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "인증서 삭제 시 앱 설치가 불가능합니다."
+            "value" : "인증서를 삭제하면 앱을 설치할 수 없습니다. 계속하시겠습니까?"
           }
         },
         "pl" : {
@@ -27191,6 +28933,12 @@
             "state" : "translated",
             "value" : "Default 32-bit emulator"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기본 32비트 에뮬레이터"
+          }
         }
       }
     },
@@ -27243,6 +28991,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "若AltSign签名遇到问题，可尝试使用ZSign，反之亦然。切换签名工具后请重启LiveContainer。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AltSign에서 오류가 발생하면 ZSign을 사용해보세요. 그 반대의 경우도 마찬가지입니다. 서명 도구를 전환한 후에는 LiveContainer를 다시 시작해주세요."
           }
         }
       }
@@ -27396,7 +29150,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "앱 선택 없이 URL을 바로 열고 싶은 경우 활성화해주세요."
+            "value" : "기본적으로 LiveContainer는 URL을 여는 방법을 묻습니다. 이 옵션을 켜면 항상 현재 앱에서 URL을 엽니다."
           }
         },
         "pl" : {
@@ -27795,6 +29549,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "存储管理"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저장 공간 관리"
           }
         }
       }
@@ -28304,6 +30064,74 @@
         }
       }
     },
+    "lc.shared.moveBackFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveContainer was unable to move the data of shared app back because LiveContainer cannot access app group. Please check JITLess diagnose page in LiveContainer settings for more information."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveContainer가 앱 그룹에 접근할 수 없어 공유 앱의 데이터를 원래 위치로 되돌리지 못했습니다. 자세한 내용은 LiveContainer 설정의 JIT-Less 모드 진단 페이지를 확인해주세요."
+          }
+        }
+      }
+    },
+    "lc.shareExtension.error.buildInstallURL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to build install URL."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설치 URL을 만들 수 없습니다."
+          }
+        }
+      }
+    },
+    "lc.shareExtension.error.buildLaunchURL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to build launch URL."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱을 실행하는 URL을 만들 수 없습니다."
+          }
+        }
+      }
+    },
+    "lc.shareExtension.error.buildSideStoreURL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to build SideStore launch URL."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SideStore를 실행하는 URL을 만들 수 없습니다."
+          }
+        }
+      }
+    },
     "lc.shareExtension.error.noContainer" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -28353,6 +30181,233 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此App没有可用的容器。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 앱에서 사용할 수 있는 컨테이너가 없습니다."
+          }
+        }
+      }
+    },
+    "lc.shareExtension.error.stillLoading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The shared item is still loading."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공유된 항목을 아직 불러오는 중입니다."
+          }
+        }
+      }
+    },
+    "lc.sidestore.actionNotFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't find the SideStore refresh action. In the built-in SideStore, reinstall the LiveContainer+SideStore IPA from My Apps, then run the shortcut again."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SideStore 새로고침 동작을 찾을 수 없습니다. 내장 SideStore의 내 앱에서 LiveContainer+SideStore IPA를 다시 설치한 뒤 단축어를 다시 실행하세요."
+          }
+        }
+      }
+    },
+    "lc.sidestore.extensionFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to start extension %@. To use the Refresh All Apps shortcut, reinstall LiveContainer+SideStore with LiveProcess installed. If you use SideStore, choose \"Keep App Extensions (Use Main Profile)\". If you use Impactor, choose \"Only Register Main Bundle\". For other sideloaders, select keep all extensions, i.e. DO NOT Remove any extension."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "확장 프로그램을 시작하지 못했습니다: %@. 모든 앱 새로고침 단축어를 사용하려면 LiveProcess가 포함된 상태로 LiveContainer+SideStore를 다시 설치하세요. SideStore를 사용 중이라면 \"앱 확장 프로그램 유지 (메인 프로필 사용)\"를 선택하세요. Impactor를 사용 중이라면 \"메인 번들만 등록\"을 선택하세요. 그 외 사이드로더는 모든 확장 프로그램을 유지하도록 선택하고, 어떤 확장 프로그램도 제거하지 마세요."
+          }
+        }
+      }
+    },
+    "lc.sidestore.homeMissing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't find the built-in SideStore data folder. Open the built-in SideStore once, then try again."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내장 SideStore 데이터 폴더를 찾을 수 없습니다. 내장 SideStore를 한 번 열어 본 뒤 다시 시도하세요."
+          }
+        }
+      }
+    },
+    "lc.sidestore.liveProcessMissing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to locate LiveProcess bundle. To use the Refresh All Apps shortcut, reinstall LiveContainer+SideStore with LiveProcess installed. If you use SideStore, choose \"Keep App Extensions (Use Main Profile)\". If you use Impactor, choose \"Only Register Main Bundle\". For other sideloaders, select keep all extensions, i.e. DO NOT Remove any extension."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveProcess 번들을 찾을 수 없습니다. 모든 앱 새로고침 단축어를 사용하려면 LiveProcess가 포함된 상태로 LiveContainer+SideStore를 다시 설치하세요. SideStore를 사용 중이라면 \"앱 확장 프로그램 유지 (메인 프로필 사용)\"를 선택하세요. Impactor를 사용 중이라면 \"메인 번들만 등록\"을 선택하세요. 그 외 사이드로더는 모든 확장 프로그램을 유지하도록 선택하고, 어떤 확장 프로그램도 제거하지 마세요."
+          }
+        }
+      }
+    },
+    "lc.sidestore.notReady" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't connect to the built-in SideStore. Please try again."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내장 SideStore에 연결하지 못했습니다. 잠시 후 다시 시도하세요."
+          }
+        }
+      }
+    },
+    "lc.sidestore.quitUnexpectedly" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Built-in SideStore quit unexpectedly"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내장 SideStore가 예기치 않게 종료되었습니다."
+          }
+        }
+      }
+    },
+    "lc.sidestore.refreshInProgress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Another refresh task is in progress."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다른 새로고침 작업이 진행 중입니다."
+          }
+        }
+      }
+    },
+    "lc.sidestore.refreshTimeout" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The refresh took too long and was cancelled."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새로고침이 너무 오래 걸려 취소되었습니다."
+          }
+        }
+      }
+    },
+    "lc.sidestore.startTimeout" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Built-in SideStore failed to start in reasonable time"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내장 SideStore가 제한 시간 내에 시작되지 못했습니다."
+          }
+        }
+      }
+    },
+    "lc.sidestore.typeNotFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SideStore refresh intent type was not found: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SideStore 새로고침 인텐트 타입을 찾을 수 없습니다: %@"
+          }
+        }
+      }
+    },
+    "lc.sidestore.typeNotIntent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SideStore type is not an AppIntent: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SideStore 타입이 앱 인텐트가 아닙니다: %@"
+          }
+        }
+      }
+    },
+    "lc.sidestore.vpnStalled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The built-in SideStore did not respond while connecting to the VPN, so the refresh was stopped. Make sure LocalDevVPN is connected, then try again."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내장 SideStore가 VPN 연결 단계에서 응답하지 않아 새로고침을 중단했습니다. LocalDevVPN이 연결되어 있는지 확인한 뒤 다시 실행해주세요."
           }
         }
       }
@@ -28405,7 +30460,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "앱 서명 과정 중 LiveContainer가 충돌하면서 앱이 손상됐을 수 있습니다. 앱을 재설치하거나 다른 사이드로딩 방식을 이용해주세요."
+            "value" : "마지막 앱 서명 중 LiveContainer가 충돌하여 앱이 손상되었을 수 있습니다. 앱을 다시 설치하거나 다른 서명 도구로 전환해주세요."
           }
         },
         "pl" : {
@@ -28708,7 +30763,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "소스 추가"
+            "value" : "저장소 추가"
           }
         },
         "pl" : {
@@ -28797,7 +30852,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "레포 추가"
+            "value" : "저장소 추가"
           }
         },
         "pl" : {
@@ -28981,7 +31036,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "소스를 추가하면 앱을 쉽게 설치할 수 있습니다."
+            "value" : "저장소를 추가하면 앱을 쉽게 설치할 수 있습니다."
           }
         },
         "pl" : {
@@ -29076,7 +31131,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이미 추가된 소스입니다."
+            "value" : "이미 추가된 저장소입니다."
           }
         },
         "pl" : {
@@ -29266,7 +31321,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "유효하지 않은 소스 파일입니다."
+            "value" : "유효하지 않은 저장소 파일입니다."
           }
         },
         "pl" : {
@@ -29361,7 +31416,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "URL을 입력해주세요."
+            "value" : "이 항목에는 다운로드 URL이 없습니다."
           }
         },
         "pl" : {
@@ -29404,6 +31459,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "本項目不包含下載網址。"
+          }
+        }
+      }
+    },
+    "lc.sources.invalidDateFormat %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid date format: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "날짜 형식이 올바르지 않습니다: %@"
           }
         }
       }
@@ -29551,7 +31623,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "소스"
+            "value" : "현재 저장소"
           }
         },
         "pl" : {
@@ -29646,7 +31718,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "소스 추가"
+            "value" : "직접 추가"
           }
         },
         "pl" : {
@@ -29719,6 +31791,12 @@
             "state" : "translated",
             "value" : "推荐源"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "추천 저장소"
+          }
         }
       }
     },
@@ -29747,6 +31825,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无可用的推荐源。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "추천 저장소가 없습니다."
           }
         }
       }
@@ -29989,7 +32073,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\"%@\" 소스를 삭제하시겠습니까?"
+            "value" : "\"%@\" 저장소를 삭제하시겠습니까?"
           }
         },
         "pl" : {
@@ -30084,7 +32168,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "소스 삭제"
+            "value" : "저장소 삭제"
           }
         },
         "pl" : {
@@ -30179,7 +32263,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "소스 삭제"
+            "value" : "저장소 삭제"
           }
         },
         "pl" : {
@@ -30274,7 +32358,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "소스를 업데이트할 수 없습니다."
+            "value" : "저장소를 업데이트할 수 없습니다."
           }
         },
         "pl" : {
@@ -30369,7 +32453,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "해당 소스에 설치할 수 있는 앱이 존재하지 않습니다."
+            "value" : "해당 저장소에 설치할 수 있는 앱이 존재하지 않습니다."
           }
         },
         "pl" : {
@@ -30458,7 +32542,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이 저장소에는 앱이 너무 많습니다. 검색을 사용하십시오."
+            "value" : "현재 저장소에 앱이 너무 많습니다. 검색을 이용해주세요."
           }
         },
         "pl" : {
@@ -30555,6 +32639,12 @@
             "state" : "translated",
             "value" : "应用本体"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 번들"
+          }
         }
       }
     },
@@ -30620,6 +32710,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "App Group 数据"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 그룹 데이터"
           }
         }
       }
@@ -30687,6 +32783,12 @@
             "state" : "translated",
             "value" : "计算中…"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계산 중…"
+          }
         }
       }
     },
@@ -30751,6 +32853,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "容器"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "컨테이너"
           }
         }
       }
@@ -30817,6 +32925,12 @@
             "state" : "translated",
             "value" : "已安装应用"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설치된 앱"
+          }
         }
       }
     },
@@ -30881,6 +32995,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "没有应用存储数据"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 저장 공간 데이터가 없습니다"
           }
         }
       }
@@ -30948,6 +33068,12 @@
             "state" : "translated",
             "value" : "其他"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기타"
+          }
         }
       }
     },
@@ -31012,6 +33138,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "临时文件"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "임시 파일"
           }
         }
       }
@@ -31078,6 +33210,12 @@
             "state" : "translated",
             "value" : "总存储"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전체 저장 공간"
+          }
         }
       }
     },
@@ -31142,6 +33280,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tweaks"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "트윅"
+          }
+        }
+      }
+    },
+    "lc.tab.appIdentifierFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to determine application-identifier"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "application-identifier를 확인할 수 없습니다."
+          }
+        }
+      }
+    },
+    "lc.tab.docsBookmarkFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to create bookmark for Documents folder?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Documents 폴더의 북마크를 만들지 못했습니다."
           }
         }
       }
@@ -31397,7 +33575,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "소스"
+            "value" : "저장소"
           }
         },
         "pl" : {
@@ -31541,6 +33719,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "補丁"
+          }
+        }
+      }
+    },
+    "lc.tweakLoader.dlopenUnknown %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dlopen(%@): unknown error, handle is NULL"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dlopen(%@): 알 수 없는 오류입니다. 핸들이 NULL입니다."
+          }
+        }
+      }
+    },
+    "lc.tweakLoader.infoPlistReadFailed %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to load %@: Unable to read Info.Plist"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@을(를) 불러올 수 없습니다: Info.plist를 읽을 수 없습니다."
+          }
+        }
+      }
+    },
+    "lc.tweakLoader.loadFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to load tweaks"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "트윅을 불러오지 못했습니다"
           }
         }
       }
@@ -31694,7 +33923,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이 폴더는 글로벌 폴더입니다. 이곳에 트윅을 추가할 경우 트윅이 모든 앱에 적용됩니다. 앱별로 트윅을 적용하고 싶으면 새로운 폴더를 만드세요."
+            "value" : "이 폴더는 전역 폴더입니다. 이곳에 트윅을 추가할 경우 트윅이 모든 앱에 적용됩니다. 앱별로 트윅을 적용하고 싶으면 새로운 폴더를 만드세요."
           }
         },
         "pl" : {
@@ -32050,6 +34279,23 @@
         }
       }
     },
+    "lc.utils.adhocSignFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to adhoc sign main executable!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메인 실행 파일의 애드혹 서명에 실패했습니다!"
+          }
+        }
+      }
+    },
     "lc.utils.initSigningError" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -32098,7 +34344,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "번들 서명에 실패했습니다."
+            "value" : "번들 서명을 시작하지 못했습니다."
           }
         },
         "pl" : {
@@ -32147,6 +34393,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bundle 簽名失敗。"
+          }
+        }
+      }
+    },
+    "lc.utils.liveProcessNotFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveProcess extension not found. Please reinstall LiveContainer and select Keep Extensions"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveProcess 확장을 찾을 수 없습니다. LiveContainer를 다시 설치하고 '앱 확장 유지'를 선택해주세요."
           }
         }
       }
@@ -32248,6 +34511,91 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "需要認證。"
+          }
+        }
+      }
+    },
+    "lc.utils.teamIdNotString" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "com.apple.developer.team-identifier is not a string!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "com.apple.developer.team-identifier 값이 문자열이 아닙니다."
+          }
+        }
+      }
+    },
+    "lc.utils.zsignLoadFailed %s" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to load ZSign: %s"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ZSign을 불러오지 못했습니다: %s"
+          }
+        }
+      }
+    },
+    "lc.utils.zsignLoadUnknown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to load ZSign: An unknown error occurred."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ZSign을 불러오지 못했습니다: 알 수 없는 오류가 발생했습니다."
+          }
+        }
+      }
+    },
+    "lc.webClip.consent %@ %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This profile installs a web clip which opens %@ (%@) in LiveContainer"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 프로필은 LiveContainer에서 %@(%@)을(를) 여는 웹 클립을 설치합니다."
+          }
+        }
+      }
+    },
+    "lc.webClip.description %@ %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Web Clip for launching %@ (%@) in LiveContainer"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LiveContainer에서 %@(%@)을(를) 실행하는 웹 클립"
           }
         }
       }
@@ -32466,7 +34814,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "웹페이지를 \"%@\"(으)로 여시겠습니까?"
+            "value" : "이 웹페이지를 \"%@\"에서 열 수 있습니다. 계속하시겠습니까?"
           }
         },
         "pl" : {
@@ -32567,7 +34915,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\"%@\"(을)를 실행하시겠습니까?"
+            "value" : "이 웹페이지에서 \"%@\"을(를) 실행하려고 합니다. 계속하시겠습니까?"
           }
         },
         "pl" : {
@@ -32717,6 +35065,74 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "執行程式"
+          }
+        }
+      }
+    },
+    "Refresh All Apps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refresh All Apps"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 앱 새로고침"
+          }
+        }
+      }
+    },
+    "Refresh Apps via Widget" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refresh Apps via Widget"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "위젯으로 앱 새로고침"
+          }
+        }
+      }
+    },
+    "Refreshes your sideloaded apps to prevent them from expiring." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refreshes your sideloaded apps to prevent them from expiring."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사이드로드한 앱이 만료되지 않도록 새로고침합니다."
+          }
+        }
+      }
+    },
+    "sign" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "서명"
           }
         }
       }

@@ -170,10 +170,10 @@ class DownloadDelegate: NSObject, URLSessionDownloadDelegate {
             if (200...299).contains(statusCode) {
                 completeCallback(location, nil)
             } else {
-                completeCallback(location, NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey: "HTTP Error: \(statusCode)"]))
+                completeCallback(location, NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey: "lc.download.httpError %lld".localizeWithFormat(statusCode)]))
             }
         } else {
-            completeCallback(location, NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response"]))
+            completeCallback(location, NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "lc.download.invalidResponse".loc]))
         }
         
 
